@@ -6,6 +6,8 @@ const cors = require('cors');
 const { MongoClient, ObjectId } = require('mongodb');
 const cookieParser = require('cookie-parser');
 
+const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
+
 const app = express();
 const port = 3000;
 app.use(cors({
