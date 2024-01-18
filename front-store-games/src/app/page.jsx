@@ -10,17 +10,13 @@ export default function App() {
   const router = useRouter();
 
   useEffect(() => {
-    let isLoggedIn;
-
     if (Object.keys(user).length === 0) {
-      isLoggedIn =  setUserData(setUser);
+      const isLoggedIn = setUserData(setUser);
+      if (isLoggedIn) {
+        router.push('/store');
+      } else {
+        router.push('/login');
+      }
     }
-
-    if (isLoggedIn) {
-      router.push('/store');
-    } else {
-      router.push('/login');
-    }
-
   }, []);
 }

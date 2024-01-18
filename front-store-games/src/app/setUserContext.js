@@ -1,10 +1,14 @@
+import cookie from 'js-cookie';
+
 export const setUserData = (setUser) => {
-    const userData = { data: "data" };    // zmienic to dla testu
+  const userName = cookie.get('username');
+  const role = cookie.get('role');
 
-    setUser(userData);
+  if (userName && role) {
+    setUser({ username: userName, role: role });
 
-    return false;    // dodac sprawdzania ciasteczek - dla testow
+    return true;
+  } else {
+    return false;
+  }
 };
-
-
-// dodac tu ze jesli context UserContext pusty to pobieranie danych z bazy
