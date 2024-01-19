@@ -3,16 +3,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient, ObjectId, LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
 const cookieParser = require('cookie-parser');
-
 const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
+const { login } = require('./rest-api/login')
 
 const app = express();
 const port = 3000;
 app.use(cors({
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: 'http://localhost:3001'
 }));
 
 app.use(bodyParser.json());
@@ -35,7 +36,9 @@ async function connect() {
     const supportChatCollection = db.collection('support-chat');
     const returnsCollection = db.collection('returns');
 
-
+    app.post('/login', async (req, res) => {
+      await login(req, res, usersCollection);
+    });
 
     app.listen(port, () => {
       console.log(`Serwer działa na porcie: ${port}`);
