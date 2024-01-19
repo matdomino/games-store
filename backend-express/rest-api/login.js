@@ -1,22 +1,21 @@
-const login = async (req, res, usersCollection) => {
+const login = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
   try {
     const { user, pass } = req.body;
     const existingUser = await usersCollection.findOne({ username: user });
 
     if (existingUser && await bcrypt.compare(pass, existingUser.password)) {
-      const accessToken = jwt.sign({ user: existingUser.username }, tokenKey, { expiresIn: '1h' });
-      res.cookie('username', user, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 1000
-      });
+      const accessToken = jwt.sign({ user: existingUser.username, role: existingUser.role }, tokenKey, { expiresIn: '1h' });
       res.cookie('accessToken', accessToken, {
         httpOnly: true,
         maxAge: 60 * 60 * 1000
       });
-      res.cookie('loggedIn', user, {
+      res.cookie('username', user, {
         maxAge: 60 * 60 * 1000
       });
       res.cookie('roleType', existingUser.role, {
+        maxAge: 60 * 60 * 1000
+      });
+      res.cookie('walletBalance', existingUser.walletBalance, {
         maxAge: 60 * 60 * 1000
       });
       res.json({ status: 'success' });
@@ -29,4 +28,4 @@ const login = async (req, res, usersCollection) => {
   }
 };
 
-module.exports = { login }
+module.exports = { login };

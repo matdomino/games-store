@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from '@/api/axios';
+import { setUserData } from "../setUserContext";
+import UserContext from "../context/UserContext";
 
-const CREATE_ACC = '/createacc';
+const REGISTER_URL = '/register';
 
 export default function SignUp ({ toggleForm }) {
+  const { setUser } = useContext(UserContext);
   const router = useRouter();
 
   const initialValues = {
@@ -22,8 +26,28 @@ export default function SignUp ({ toggleForm }) {
     passwordRep: Yup.string().oneOf([Yup.ref('password'), null], 'Hasła się nie zgadzają')
   });
 
-  const onSubmit = () => {
+  const onSubmit = async (values, { resetForm }) => {
+    const userData = {
+      email: values.email,
+      user: values.username,
+      pass: values.password
+    };
 
+    try {
+      const res = await axios.post(REGISTER_URL, userData, { withCredentials: true });
+
+      if (res.data.status === 'success') {
+        const isLoggedIn = setUserData(setUser);
+      }
+    } catch(err) {
+      if (err.response && err.response.data.error) {
+        alert(err.response.data.error);
+      } else {
+        alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
+      }
+    }
+
+    resetForm();
   };
 
   const formik = useFormik({

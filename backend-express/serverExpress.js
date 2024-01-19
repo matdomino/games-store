@@ -2,11 +2,15 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const { MongoClient, ObjectId, LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
 const cookieParser = require('cookie-parser');
+const tokenKey = require('./tokenKey');
 const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
 const { login } = require('./rest-api/login')
+const { register } = require('./rest-api/register')
 
 const app = express();
 const port = 3000;
@@ -37,7 +41,11 @@ async function connect() {
     const returnsCollection = db.collection('returns');
 
     app.post('/login', async (req, res) => {
-      await login(req, res, usersCollection);
+      await login(req, res, usersCollection, bcrypt, jwt, tokenKey);
+    });
+
+    app.post('/register', async (req, res) => {
+      await register(req, res, usersCollection, bcrypt, jwt, tokenKey);
     });
 
     app.listen(port, () => {
