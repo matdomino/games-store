@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
-import cookie from 'js-cookie';
 import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 export default function Login() {
   const [ form, setForm ] = useState(true);
@@ -31,7 +32,7 @@ export default function Login() {
         <a href="https://github.com/matdomino" target="_blank">Mateusz Domino 2024</a>
       </div>
       <div className="form">
-        {/* { form ? <SignIn toggleForm={handleToggleForm} /> : <SignUp toggleForm={handleToggleForm} /> } */}
+        { form ? <SignIn toggleForm={handleToggleForm} /> : <SignUp toggleForm={handleToggleForm} /> }
       </div>
     </>
   );
