@@ -38,6 +38,11 @@ export default function SignUp ({ toggleForm }) {
 
       if (res.data.status === 'success') {
         const isLoggedIn = setUserData(setUser);
+        if (isLoggedIn) {
+          router.push('/store');
+        } else {
+          router.push("/");
+        }
       }
     } catch(err) {
       if (err.response && err.response.data.error) {

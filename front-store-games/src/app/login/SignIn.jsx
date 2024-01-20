@@ -34,9 +34,9 @@ export default function SignIn ({ toggleForm }) {
         const isLoggedIn = setUserData(setUser);
         if (isLoggedIn) {
           router.push('/store');
+        } else {
+          router.push("/");
         }
-
-        router.push("/");
       } else {
         alert('Niepoprawne dane logowania.');
       }

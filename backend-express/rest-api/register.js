@@ -33,7 +33,8 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
           },
           games: [],
           transactions: [],
-          support: []
+          support: [],
+          notifications: []
         };
 
         const addUser = await usersCollection.insertOne(newUser);

@@ -5,7 +5,7 @@ export const setUserData = (setUser) => {
   const role = cookie.get('roleType');
   const walletBalance = cookie.get('walletBalance');
 
-  if (userName && role) {
+  if (userName && role && walletBalance) {
     setUser({ username: userName, role: role, walletBalance: walletBalance });
 
     return true;
