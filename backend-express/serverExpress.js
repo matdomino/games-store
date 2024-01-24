@@ -14,6 +14,7 @@ const { register } = require('./rest-api/register');
 const { getUsers } = require('./rest-api/getUsersList');
 const { getUser } = require('./rest-api/getUser');
 const { banUser } = require('./rest-api/banUser');
+const { addGame } = require('./rest-api/addGame');
 
 const app = express();
 const port = 3000;
@@ -61,6 +62,10 @@ async function connect() {
 
     app.delete('/banuser/:id', async (req, res) => {
       await banUser(req, res, usersCollection, ObjectId);
+    });
+
+    app.post('/addgame', async (req, res) => {
+      await addGame(req, res, gamesCollection);
     });
 
     // --- USER ---

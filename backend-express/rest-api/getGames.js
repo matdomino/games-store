@@ -51,7 +51,7 @@ const getGames = async (req, res, gamesCollection) => {
       const games = await gamesCollection.aggregate([
         { $match: query },
         { $addFields: { averageGrade: { $avg: "$reviews.grade" } } }, 
-        { $project: { _id: 1, name: 1, price: 1, genres: 1, averageGrade: 1 } },
+        { $project: { _id: 1, name: 1, price: 1, genres: 1, averageGrade: 1, mainPhoto: 1 } },
         { $sort: sortOptions }
       ]).toArray();
       res.json({ status: "success", games: games });
