@@ -12,6 +12,7 @@ const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
 const { getUsers } = require('./rest-api/getUsersList');
+const { getUser } = require('./rest-api/getUser');
 
 const app = express();
 const port = 3000;
@@ -48,7 +49,11 @@ async function connect() {
     });
 
     app.get('/users', async (req, res) => {
-      await getUsers(req, res, usersCollection, tokenKey);
+      await getUsers(req, res, usersCollection);
+    });
+
+    app.get('/user/:id', async (req, res) => {
+      await getUser(req, res, usersCollection, ObjectId);
     });
 
     app.listen(port, () => {

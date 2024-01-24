@@ -17,7 +17,7 @@ const getUsers = async (req, res, usersCollection) => {
       } else {
         res.status(401).json({ error: "Nie masz wymaganych uprawnień" });
       }
-    };
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Wystąpił błąd serwera." });
