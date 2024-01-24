@@ -49,6 +49,8 @@ async function connect() {
       await register(req, res, usersCollection, bcrypt, jwt, tokenKey);
     });
 
+    // --- EMPLOYEE ---
+
     app.get('/users', async (req, res) => {
       await getUsers(req, res, usersCollection);
     });
@@ -59,6 +61,12 @@ async function connect() {
 
     app.delete('/banuser/:id', async (req, res) => {
       await banUser(req, res, usersCollection, ObjectId);
+    });
+
+    // --- USER ---
+
+    app.get('/storegames', async (req, res) => {
+      await getGames(req, res, gamesCollection);
     });
 
     app.listen(port, () => {
