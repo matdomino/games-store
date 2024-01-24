@@ -4,9 +4,9 @@ const addGame = async (req, res, gamesCollection) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
     let correctData = true;
-    const { name, price, publisher, mainPhoto, photos, genres, description, realseYear, location } = req.body;
+    const { name, price, publisher, mainPhoto, photos, genres, description, releaseYear, location } = req.body;
 
-    if (isValidLogin) {
+    if (isValidLogin === true) {
       const role = req.cookies.roleType;
 
       if (role === "employee") {
@@ -24,7 +24,7 @@ const addGame = async (req, res, gamesCollection) => {
           correctData = false;
         } else if (!description || typeof(description) !== "string") {
           correctData = false;
-        } else if (!realseYear || typeof(realseYear) !== "number") {
+        } else if (!releaseYear || typeof(releaseYear) !== "number") {
           correctData = false;
         } else if (!location || typeof(location) !== "string") {
           correctData = false;
@@ -55,7 +55,7 @@ const addGame = async (req, res, gamesCollection) => {
           photos: photos,
           genres: genres,
           description: description,
-          realseYear: realseYear,
+          releaseYear: releaseYear,
           location: location,
           reviews: []
         }
@@ -69,6 +69,8 @@ const addGame = async (req, res, gamesCollection) => {
         } else {
           return res.status(400).json({ error: "Nieprawidłowe dane wejściowe." });
         }
+      } else {
+        res.status(401).json({ error: "Nie masz wymaganych uprawnień" });
       }
     }
   } catch (err) {

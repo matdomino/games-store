@@ -4,7 +4,7 @@ const getUser = async (req, res, usersCollection, ObjectId) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
 
-    if (isValidLogin) {
+    if (isValidLogin === true) {
       const role = req.cookies.roleType;
 
       if (role === "employee") {

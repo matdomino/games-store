@@ -15,6 +15,9 @@ const { getUsers } = require('./rest-api/getUsersList');
 const { getUser } = require('./rest-api/getUser');
 const { banUser } = require('./rest-api/banUser');
 const { addGame } = require('./rest-api/addGame');
+const { getGames } = require('./rest-api/getGames');
+const { searchGames } = require('./rest-api/searchGames');
+
 
 const app = express();
 const port = 3000;
@@ -72,6 +75,10 @@ async function connect() {
 
     app.get('/storegames', async (req, res) => {
       await getGames(req, res, gamesCollection);
+    });
+
+    app.get('/searchgames', async (req, res) => {
+      await searchGames(req, res, gamesCollection);
     });
 
     app.listen(port, () => {

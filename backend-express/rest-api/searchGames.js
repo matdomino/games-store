@@ -1,9 +1,9 @@
 const  { verifyAuth } = require('./auth');
 
-const getGames = async (req, res, gamesCollection) => {
+const searchGames = async (req, res, gamesCollection) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
-    const { filterBy, sortBy, sortOrder, minPrice, maxPrice } = req.body;
+    const { searchPhrase, filterBy, sortBy, sortOrder, minPrice, maxPrice } = req.body;
 
     filterByOptions = [
       "FPS",
@@ -34,6 +34,22 @@ const getGames = async (req, res, gamesCollection) => {
         query.genres = { $in: [filterBy] };
       }
 
+      if (searchPhrase) {
+        const isNumeric = !isNaN(parseInt(searchPhrase));
+        if (isNumeric) {
+          query.$or = [
+            { name: { $regex: searchPhrase, $options: 'i' } },
+            { publisher: { $regex: searchPhrase, $options: 'i' } },
+            { releaseYear: parseInt(searchPhrase) }
+          ];
+        } else {
+          query.$or = [
+            { name: { $regex: searchPhrase, $options: 'i' } },
+            { publisher: { $regex: searchPhrase, $options: 'i' } }
+          ];
+        }
+      }
+
       if (minPrice || maxPrice) {
         query.price = {};
         if (minPrice) {
@@ -62,4 +78,4 @@ const getGames = async (req, res, gamesCollection) => {
   }
 };
 
-module.exports = { getGames };
+module.exports = { searchGames };
