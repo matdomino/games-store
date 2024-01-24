@@ -13,6 +13,7 @@ const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
 const { getUsers } = require('./rest-api/getUsersList');
 const { getUser } = require('./rest-api/getUser');
+const { banUser } = require('./rest-api/banUser');
 
 const app = express();
 const port = 3000;
@@ -54,6 +55,10 @@ async function connect() {
 
     app.get('/user/:id', async (req, res) => {
       await getUser(req, res, usersCollection, ObjectId);
+    });
+
+    app.delete('/banuser/:id', async (req, res) => {
+      await banUser(req, res, usersCollection, ObjectId);
     });
 
     app.listen(port, () => {
