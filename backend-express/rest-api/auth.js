@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const tokenKey = require('../tokenKey');
 
 const clearAllCookies = (res) => {
   res.clearCookie('LoggedInUser');
@@ -6,10 +7,10 @@ const clearAllCookies = (res) => {
   res.clearCookie('username');
 };
 
-const verifyAuth = async (req, res, tokenKey) => {
+const verifyAuth = async (req, res) => {
   const user = req.cookies.username;
   const accessToken = req.cookies.accessToken;
-  const role = req.cookies.role;
+  const role = req.cookies.roleType;
 
   if (!user || !accessToken || !role) {
     clearAllCookies(res);

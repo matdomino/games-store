@@ -5,12 +5,13 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const { MongoClient, ObjectId, LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const tokenKey = require('./tokenKey');
 const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
-const { login } = require('./rest-api/login')
-const { register } = require('./rest-api/register')
+const { login } = require('./rest-api/login');
+const { register } = require('./rest-api/register');
+const { getUsers } = require('./rest-api/getUsersList');
 
 const app = express();
 const port = 3000;
@@ -35,10 +36,8 @@ async function connect() {
     const db = client.db(dbName);
     const usersCollection = db.collection('users');
     const gamesCollection = db.collection('games');
-    const pendingOrdersCollection = db.collection('pending-orders');
-    const closedOrdersCollection = db.collection('closed-orders');
-    const supportChatCollection = db.collection('support-chat');
-    const returnsCollection = db.collection('returns');
+    const supportChatCollection = db.collection('support-chat'); // zmienic na support i dodac closed support
+    const returnsCollection = db.collection('returns'); // zmienic na pending i closed
 
     app.post('/login', async (req, res) => {
       await login(req, res, usersCollection, bcrypt, jwt, tokenKey);
@@ -46,6 +45,10 @@ async function connect() {
 
     app.post('/register', async (req, res) => {
       await register(req, res, usersCollection, bcrypt, jwt, tokenKey);
+    });
+
+    app.get('/users', async (req, res) => {
+      await getUsers(req, res, usersCollection, tokenKey);
     });
 
     app.listen(port, () => {
