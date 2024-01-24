@@ -1,6 +1,6 @@
 const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
   try {
-    const { email, user, pass } = req.body;
+    const { email, user, pass, address } = req.body;
 
     let correctData = true;
 
@@ -10,13 +10,23 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
       correctData = false;
     } else if (!pass || typeof(pass) !== "string" || pass.length < 5 || pass.length > 30) {
       correctData = false;
+    } else if (!address.city || typeof(address.city) !== "string" || address.city.length < 3 || address.city.length > 30) {
+      correctData = false;
+    } else if (address.street && (typeof(address.street) !== "string" || address.street.length < 3 || address.street.length > 30)) {
+      correctData = false;
+    } else if (!address.home || typeof(address.home) !== "string" || address.home.length < 1 || address.home.length > 4) {
+      correctData = false;
+    } else if (address.flat && (typeof(address.flat) !== "number" || address.flat < 1 || address.flat > 100)) {
+      correctData = false;
+    } else if (!address.postCode || typeof(address.postCode) !== "string" || !/^\d{2}-\d{3}$/.test(address.postCode)) {
+      correctData = false;
     }
 
     if (correctData) {
       const existingUsernameAcc = await usersCollection.findOne({ username: user });
       const existingEmailAcc = await usersCollection.findOne({ email: email });
 
-      if (existingUsernameAcc === null && existingEmailAcc === null) {
+      if (!existingUsernameAcc && !existingEmailAcc) {
         const encryptedPass = await bcrypt.hash(pass, 10);
         const newUser = {
           email: email,
@@ -24,15 +34,8 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
           password: encryptedPass,
           role: 'user',
           walletBalance: 0,
-          address: {
-            postCode: "",
-            city: "",
-            street: "",
-            house: "",
-            flat: ""
-          },
+          address: address,
           games: [],
-          transactions: [],
           support: [],
           notifications: []
         };
