@@ -24,6 +24,7 @@ const { deleteFromCart } = require('./rest-api/deleteFromCart');
 const { checkOut } = require('./rest-api/checkOut');
 const { clearNotifications } = require('./rest-api/clearNotifications');
 const { getNotifications } = require('./rest-api/getNotifications');
+const { getUserData } = require('./rest-api/getUserData');
 
 
 const app = express();
@@ -114,6 +115,10 @@ async function connect() {
 
     app.get('/notifications', async (req, res) => {
       await getNotifications(req, res, usersCollection);
+    });
+
+    app.get('/getuserdata', async (req, res) => {
+      await getUserData(req, res, usersCollection);
     });
 
     app.listen(port, () => {
