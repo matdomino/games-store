@@ -22,6 +22,7 @@ const { getGameDetails } = require('./rest-api/getGameDetails');
 const { addToCart } = require('./rest-api/addToCart');
 const { deleteFromCart } = require('./rest-api/deleteFromCart');
 const { checkOut } = require('./rest-api/checkOut');
+const { clearNotifications } = require('./rest-api/clearNotifications');
 
 
 const app = express();
@@ -104,6 +105,10 @@ async function connect() {
 
     app.get('/checkout', async (req, res) => {
       await checkOut(req, res, usersCollection, gamesCollection, ObjectId);
+    });
+
+    app.delete('/clearnotifications', async (req, res) => {
+      await clearNotifications(req, res, usersCollection);
     });
 
     app.listen(port, () => {
