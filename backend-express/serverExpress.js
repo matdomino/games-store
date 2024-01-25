@@ -25,6 +25,7 @@ const { checkOut } = require('./rest-api/checkOut');
 const { clearNotifications } = require('./rest-api/clearNotifications');
 const { getNotifications } = require('./rest-api/getNotifications');
 const { getUserData } = require('./rest-api/getUserData');
+const { getWalletBalance } = require('./rest-api/getWalletBalance');
 
 
 const app = express();
@@ -118,7 +119,15 @@ async function connect() {
     });
 
     app.get('/getuserdata', async (req, res) => {
-      await getUserData(req, res, usersCollection);
+      getUserData(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.get('/walletbalance', async (req, res) => {
+      getWalletBalance(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
     });
 
     app.listen(port, () => {

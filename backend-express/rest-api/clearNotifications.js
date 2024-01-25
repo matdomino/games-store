@@ -4,7 +4,7 @@ const clearNotifications = async (req, res, usersCollection) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
 
-    if (isValidLogin) {
+    if (isValidLogin === true) {
       const user = req.cookies.username;
       const updateNotifications = await usersCollection.updateOne({ "username": user }, { $set: { "notifications": [] } });
       console.log(updateNotifications);

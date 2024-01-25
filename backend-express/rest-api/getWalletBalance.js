@@ -1,6 +1,6 @@
 const { verifyAuth } = require('./auth');
 
-const getUserData = (req, res, usersCollection) => {
+const getWalletBalance = (req, res, usersCollection) => {
   return new Promise(async (resolve, reject) => {
     try {
       const isValidLogin = await verifyAuth(req, res);
@@ -9,21 +9,13 @@ const getUserData = (req, res, usersCollection) => {
         const user = req.cookies.username;
         const userData = await usersCollection.findOne(
           { "username": user },
-          {
-            projection: {
-              _id: 0,
-              email: 1,
-              username: 1,
-              role: 1,
-              address: 1
-            }
-          }
+          { projection: { _id: 0, walletBalance: 1 } }
         );
 
         if (userData) {
-          resolve({ status: "success", data: userData });
+          resolve({ status: "success", balance: userData.walletBalance });
         } else {
-          reject({ status: 500, error: "Wystąpił błąd podczas pobierania informacji" });
+          reject({ status: 500, error: "Wystąpił błąd podczas pobierania stanu portfela." });
         }
       }
     } catch (err) {
@@ -33,4 +25,4 @@ const getUserData = (req, res, usersCollection) => {
   });
 };
 
-module.exports = { getUserData };
+module.exports = { getWalletBalance };
