@@ -36,8 +36,11 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
           walletBalance: 0,
           address: address,
           games: [],
+          favouriteGames: [],
+          transactions: [],
           support: [],
-          notifications: []
+          notifications: [],
+          shoppingCart: []
         };
 
         const addUser = await usersCollection.insertOne(newUser);

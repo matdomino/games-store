@@ -18,6 +18,7 @@ const { addGame } = require('./rest-api/addGame');
 const { getGames } = require('./rest-api/getGames');
 const { searchGames } = require('./rest-api/searchGames');
 const { getGameDetails } = require('./rest-api/getGameDetails');
+const { addToCart } = require('./rest-api/addToCart');
 
 
 const app = express();
@@ -84,6 +85,10 @@ async function connect() {
 
     app.get('/gamedetails', async(req, res) => {
       await getGameDetails(req, res, gamesCollection, ObjectId);
+    });
+
+    app.put('/addgametocart/:gameId', async (req, res) => {
+      await addToCart(req, res, usersCollection, gamesCollection, ObjectId);
     });
 
     app.listen(port, () => {

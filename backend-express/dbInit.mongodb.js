@@ -21,6 +21,9 @@ db.users.insertOne({
     postCode: "80-000"
   },
   games: [],
+  favouriteGames: [],
+  transactions: [],
   support: [],
-  notifications: []
+  notifications: [],
+  shoppingCart: []
 });
