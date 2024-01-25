@@ -26,6 +26,7 @@ const { clearNotifications } = require('./rest-api/clearNotifications');
 const { getNotifications } = require('./rest-api/getNotifications');
 const { getUserData } = require('./rest-api/getUserData');
 const { getWalletBalance } = require('./rest-api/getWalletBalance');
+const { changeUsername } = require('./rest-api/changeUsername');
 
 
 const app = express();
@@ -126,6 +127,12 @@ async function connect() {
 
     app.get('/walletbalance', async (req, res) => {
       getWalletBalance(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.put('/changeusername', async (req, res) => {
+      changeUsername(req, res, usersCollection, bcrypt)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
