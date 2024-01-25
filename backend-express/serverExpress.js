@@ -27,6 +27,7 @@ const { getNotifications } = require('./rest-api/getNotifications');
 const { getUserData } = require('./rest-api/getUserData');
 const { getWalletBalance } = require('./rest-api/getWalletBalance');
 const { changeUsername } = require('./rest-api/changeUsername');
+const { changePassword } = require('./rest-api/changePassword');
 
 
 const app = express();
@@ -133,6 +134,12 @@ async function connect() {
 
     app.put('/changeusername', async (req, res) => {
       changeUsername(req, res, usersCollection, bcrypt)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.put('/changepassword', async (req, res) => {
+      changePassword(req, res, usersCollection, bcrypt)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });

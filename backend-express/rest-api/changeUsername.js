@@ -10,6 +10,11 @@ const changeUsername = (req, res, usersCollection, bcrypt) => {
         const username = req.cookies.username;
 
         if (user && pass) {
+          if (typeof(user) !== "string" || user.length < 4 || user.length > 20) {
+            reject({ status: 400, error: "Nazwa nie spełnia wymagań." });
+            return;
+          }
+
           const existingUsername = await usersCollection.findOne({ username: user });
 
           if (existingUsername) {
