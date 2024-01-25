@@ -28,6 +28,7 @@ const { getUserData } = require('./rest-api/getUserData');
 const { getWalletBalance } = require('./rest-api/getWalletBalance');
 const { changeUsername } = require('./rest-api/changeUsername');
 const { changePassword } = require('./rest-api/changePassword');
+const { changeAdress } = require('./rest-api/changeAdress');
 
 
 const app = express();
@@ -53,8 +54,8 @@ async function connect() {
     const db = client.db(dbName);
     const usersCollection = db.collection('users');
     const gamesCollection = db.collection('games');
-    const supportChatCollection = db.collection('support-chat'); // zmienic na support i dodac closed support
-    const returnsCollection = db.collection('returns'); // zmienic na pending i closed
+    const supportChatCollection = db.collection('support-chat');
+    const returnsCollection = db.collection('returns');
 
     app.post('/login', async (req, res) => {
       await login(req, res, usersCollection, bcrypt, jwt, tokenKey);
@@ -140,6 +141,12 @@ async function connect() {
 
     app.put('/changepassword', async (req, res) => {
       changePassword(req, res, usersCollection, bcrypt)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.put('/changeaddress', async (req, res) => {
+      changeAdress(req, res, usersCollection)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
