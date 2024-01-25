@@ -12,14 +12,15 @@ const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
 const { logout } = require('./rest-api/logout');
-const { getUsers } = require('./rest-api/getUsersList');
-const { getUser } = require('./rest-api/getUser');
-const { banUser } = require('./rest-api/banUser');
-const { addGame } = require('./rest-api/addGame');
+const { getUsers } = require('./rest-api/employee/getUsersList');
+const { getUser } = require('./rest-api/employee/getUser');
+const { banUser } = require('./rest-api/employee/banUser');
+const { addGame } = require('./rest-api/employee/addGame');
 const { getGames } = require('./rest-api/getGames');
 const { searchGames } = require('./rest-api/searchGames');
 const { getGameDetails } = require('./rest-api/getGameDetails');
 const { addToCart } = require('./rest-api/addToCart');
+const { deleteFromCart } = require('./rest-api/deleteFromCart');
 
 
 const app = express();
@@ -94,6 +95,10 @@ async function connect() {
 
     app.put('/addgametocart/:gameId', async (req, res) => {
       await addToCart(req, res, usersCollection, gamesCollection, ObjectId);
+    });
+
+    app.delete('/deletefromcart/:gameId', async (req, res) => {
+      await deleteFromCart(req, res, usersCollection);
     });
 
     app.listen(port, () => {

@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const  { verifyAuth } = require('../auth');
 
 const banUser = async  (req, res, usersCollection, ObjectId) => {
   try {
