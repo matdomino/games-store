@@ -23,6 +23,7 @@ const { addToCart } = require('./rest-api/addToCart');
 const { deleteFromCart } = require('./rest-api/deleteFromCart');
 const { checkOut } = require('./rest-api/checkOut');
 const { clearNotifications } = require('./rest-api/clearNotifications');
+const { getNotifications } = require('./rest-api/getNotifications');
 
 
 const app = express();
@@ -109,6 +110,10 @@ async function connect() {
 
     app.delete('/clearnotifications', async (req, res) => {
       await clearNotifications(req, res, usersCollection);
+    });
+
+    app.get('/notifications', async (req, res) => {
+      await getNotifications(req, res, usersCollection);
     });
 
     app.listen(port, () => {
