@@ -1,4 +1,4 @@
-const { verifyAuth, clearAllCookies } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const changeAdress = (req, res, usersCollection) => {
   return new Promise(async (resolve, reject) => {
