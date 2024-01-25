@@ -10,6 +10,10 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
       correctData = false;
     } else if (!pass || typeof(pass) !== "string" || pass.length < 5 || pass.length > 30) {
       correctData = false;
+    } else if (!address.firstName || typeof(address.firstName) !== "string" || address.firstName.length < 2 || address.firstName.length > 20) {
+      correctData = false;
+    } else if (!address.lastName || typeof(address.lastName) !== "string" || address.lastName.length < 2 || address.lastName.length > 30) {
+      correctData = false;
     } else if (!address.city || typeof(address.city) !== "string" || address.city.length < 3 || address.city.length > 30) {
       correctData = false;
     } else if (address.street && (typeof(address.street) !== "string" || address.street.length < 3 || address.street.length > 30)) {
@@ -34,7 +38,15 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
           password: encryptedPass,
           role: 'user',
           walletBalance: 0,
-          address: address,
+          address: {
+            firstName: address.firstName,
+            lastName: address.lastName,
+            city: address.city,
+            street: address.street,
+            home: address.home,
+            flat: address.flat,
+            postCode: address.postCode
+          },
           games: [],
           favouriteGames: [],
           transactions: [],

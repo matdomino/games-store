@@ -21,6 +21,7 @@ const { searchGames } = require('./rest-api/searchGames');
 const { getGameDetails } = require('./rest-api/getGameDetails');
 const { addToCart } = require('./rest-api/addToCart');
 const { deleteFromCart } = require('./rest-api/deleteFromCart');
+const { checkOut } = require('./rest-api/checkOut');
 
 
 const app = express();
@@ -99,6 +100,10 @@ async function connect() {
 
     app.delete('/deletefromcart/:gameId', async (req, res) => {
       await deleteFromCart(req, res, usersCollection);
+    });
+
+    app.get('/checkout', async (req, res) => {
+      await checkOut(req, res, usersCollection, gamesCollection, ObjectId);
     });
 
     app.listen(port, () => {
