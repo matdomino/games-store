@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken');
 const tokenKey = require('../tokenKey');
 
 const clearAllCookies = (res) => {
-  res.clearCookie('LoggedInUser');
   res.clearCookie('accessToken');
   res.clearCookie('username');
+  res.clearCookie('roleType');
+  res.clearCookie('walletBalance');
 };
 
 const verifyAuth = async (req, res) => {
@@ -31,4 +32,4 @@ const verifyAuth = async (req, res) => {
   }
 };
 
-module.exports = { clearAllCookies, verifyAuth }
+module.exports = { clearAllCookies, verifyAuth };

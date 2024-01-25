@@ -11,6 +11,7 @@ const tokenKey = require('./tokenKey');
 const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
+const { logout } = require('./rest-api/logout');
 const { getUsers } = require('./rest-api/getUsersList');
 const { getUser } = require('./rest-api/getUser');
 const { banUser } = require('./rest-api/banUser');
@@ -54,6 +55,10 @@ async function connect() {
     app.post('/register', async (req, res) => {
       await register(req, res, usersCollection, bcrypt, jwt, tokenKey);
     });
+
+    app.delete('/logout', async (req, res) => {
+      await logout(req, res);
+    })
 
     // --- EMPLOYEE ---
 
