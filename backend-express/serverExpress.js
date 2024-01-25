@@ -17,6 +17,7 @@ const { banUser } = require('./rest-api/banUser');
 const { addGame } = require('./rest-api/addGame');
 const { getGames } = require('./rest-api/getGames');
 const { searchGames } = require('./rest-api/searchGames');
+const { getGameDetails } = require('./rest-api/getGameDetails');
 
 
 const app = express();
@@ -79,6 +80,10 @@ async function connect() {
 
     app.get('/searchgames', async (req, res) => {
       await searchGames(req, res, gamesCollection);
+    });
+
+    app.get('/gamedetails', async(req, res) => {
+      await getGameDetails(req, res, gamesCollection, ObjectId);
     });
 
     app.listen(port, () => {
