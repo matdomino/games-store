@@ -29,6 +29,7 @@ const { getWalletBalance } = require('./rest-api/getWalletBalance');
 const { changeUsername } = require('./rest-api/changeUsername');
 const { changePassword } = require('./rest-api/changePassword');
 const { changeAdress } = require('./rest-api/changeAdress');
+const { changeEmail } = require('./rest-api/changeEmail');
 const { deleteAccount } = require('./rest-api/deleteAccount');
 
 
@@ -148,6 +149,12 @@ async function connect() {
 
     app.put('/changeaddress', async (req, res) => {
       changeAdress(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.put('/changeemail', async (req, res) => {
+      changeEmail(req, res, usersCollection, bcrypt)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });

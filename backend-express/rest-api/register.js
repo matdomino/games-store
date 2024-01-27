@@ -4,7 +4,7 @@ const register = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
 
     let correctData = true;
 
-    if (!email || typeof(email) !== "string" || email.length > 35) {
+    if (!email || typeof(email) !== "string" || email.length > 35 || !/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email)) {
       correctData = false;
     } else if (!user || typeof(user) !== "string" || user.length < 4 || user.length > 20) {
       correctData = false;
