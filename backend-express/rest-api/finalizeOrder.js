@@ -25,7 +25,7 @@ const finalizeOrder = async (req, res, usersCollection, transactionsCollection, 
           const transaction = {
             type: "Order finalization",
             date: new Date(),
-            returned: false,
+            returned: [],
             cart: shoppingCart,
             total: roundedTotal,
             oldBalance: userData.walletBalance,

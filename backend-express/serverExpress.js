@@ -37,6 +37,8 @@ const { addToFavourites } = require('./rest-api/addToFavourites');
 const { reviewGame } = require('./rest-api/reviewGame');
 const { returnGame } = require('./rest-api/returnGame');
 const { sendSupportMsg } = require('./rest-api/sendSupportMsg');
+const { getHistory } = require('./rest-api/getHistory');
+const { getHistoryDetails } = require('./rest-api/getHistoryDetails');
 
 
 const app = express();
@@ -212,6 +214,18 @@ async function connect() {
 
     app.post('/sendsupportmsg', async (req, res) => {
       sendSupportMsg(req, res, usersCollection, pendingSupportCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.get('/gettransactionshistory', async (req, res) => {
+      getHistory(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.get('/gettransactiondetails/:transId', async (req, res) => {
+      getHistoryDetails(req, res, usersCollection, transactionsCollection, ObjectId)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });

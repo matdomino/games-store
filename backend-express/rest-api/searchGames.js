@@ -62,6 +62,9 @@ const searchGames = async (req, res, gamesCollection) => {
 
       if ( sortBy && sortOrder && sortByOptions.includes(sortBy) && sortOrderOptions.includes(sortOrder)) {
         sortOptions[sortBy] = sortOrder === "asc" ? 1 : -1;
+      } else {
+        res.status(400).json({ error: "Złe opcje dla sortowania." });
+        return;
       }
 
       const games = await gamesCollection.aggregate([
