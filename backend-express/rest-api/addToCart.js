@@ -10,6 +10,12 @@ const addToCart = async (req, res, usersCollection, gamesCollection, ObjectId) =
       const userProfile = await usersCollection.findOne({ "username": user });
       const game = await gamesCollection.findOne({ _id: new ObjectId(gameId) });
       if (game) {
+        const gameInLibrary = userProfile.games.some(g => g.id.toString() === gameId);
+        
+        if (gameInLibrary === true) {
+          return res.json({ status: "Gra w bibliotece" });
+        }
+
         if (!userProfile.shoppingCart.includes(gameId)) {
           const updateCart = await usersCollection.updateOne({ "username": user }, { $push: { shoppingCart: gameId } });
 
