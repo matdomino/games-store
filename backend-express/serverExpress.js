@@ -35,6 +35,7 @@ const { finalizeOrder } = require('./rest-api/finalizeOrder');
 const { getOwnedGames } = require('./rest-api/getOwnedGames');
 const { addToFavourites } = require('./rest-api/addToFavourites');
 const { reviewGame } = require('./rest-api/reviewGame');
+const { returnGame } = require('./rest-api/returnGame');
 
 
 const app = express();
@@ -196,8 +197,14 @@ async function connect() {
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
 
-    app.post('/reviewgame/', async (req, res) => {
+    app.post('/reviewgame', async (req, res) => {
       reviewGame(req, res, usersCollection, gamesCollection, ObjectId)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.post('/returngame', async (req, res) => {
+      returnGame(req, res, usersCollection, pendingReturnsCollection)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
