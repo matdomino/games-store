@@ -33,6 +33,7 @@ const { deleteAccount } = require('./rest-api/deleteAccount');
 const { addBalance } = require('./rest-api/addBalance');
 const { finalizeOrder } = require('./rest-api/finalizeOrder');
 const { getOwnedGames } = require('./rest-api/getOwnedGames');
+const { addToFavourites } = require('./rest-api/addToFavourites');
 
 
 const app = express();
@@ -184,6 +185,12 @@ async function connect() {
 
     app.get('/getownedgames', async (req, res) => {
       getOwnedGames(req, res, usersCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.post('/addtofavourites/:gameId', async (req, res) => {
+      addToFavourites(req, res, usersCollection, ObjectId)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
