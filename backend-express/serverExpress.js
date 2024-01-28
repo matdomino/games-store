@@ -32,6 +32,7 @@ const { changeAdress } = require('./rest-api/changeAdress');
 const { changeEmail } = require('./rest-api/changeEmail');
 const { deleteAccount } = require('./rest-api/deleteAccount');
 const { addBalance } = require('./rest-api/addBalance');
+const { finalizeOrder } = require('./rest-api/finalizeOrder');
 
 
 const app = express();
@@ -171,6 +172,12 @@ async function connect() {
 
     app.put('/addbalance', async (req, res) => {
       addBalance(req, res, usersCollection, transactionsCollection)
+      .then(result => res.json(result))
+      .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.post('/finalizeorder', async (req, res) => {
+      finalizeOrder(req, res, usersCollection, transactionsCollection, gamesCollection, ObjectId)
       .then(result => res.json(result))
       .catch(error => res.status(error.status).json({ error: error.error }));
     });

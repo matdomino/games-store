@@ -12,7 +12,7 @@ const checkOut = async (req, res, usersCollection, gamesCollection, ObjectId) =>
 
       const shoppingCartIds = userData.shoppingCart;
       const shoppingCart = await Promise.all(shoppingCartIds.map(async (elem) => {
-        const elemData = await gamesCollection.findOne({ _id: new ObjectId(elem) }, { projection: { _id: 0, name: 1, price: 1 } });
+        const elemData = await gamesCollection.findOne({ _id: new ObjectId(elem) }, { projection: { _id: 1, name: 1, price: 1 } });
         return elemData;
       }));
 
