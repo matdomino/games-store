@@ -36,6 +36,7 @@ const { getOwnedGames } = require('./rest-api/getOwnedGames');
 const { addToFavourites } = require('./rest-api/addToFavourites');
 const { reviewGame } = require('./rest-api/reviewGame');
 const { returnGame } = require('./rest-api/returnGame');
+const { sendSupportMsg } = require('./rest-api/sendSupportMsg');
 
 
 const app = express();
@@ -205,6 +206,12 @@ async function connect() {
 
     app.post('/returngame', async (req, res) => {
       returnGame(req, res, usersCollection, pendingReturnsCollection)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.post('/sendsupportmsg', async (req, res) => {
+      sendSupportMsg(req, res, usersCollection, pendingSupportCollection)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
