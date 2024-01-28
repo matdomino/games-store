@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const { MongoClient, ObjectId } = require('mongodb');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
 const tokenKey = require('./tokenKey');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
@@ -58,6 +59,7 @@ const dbName = 'games-store-db';
 async function connect() {
   try {
     const client = new MongoClient(dbUrl);
+    const upload = multer();
     await client.connect();
     console.log('Pomyślnie połączono z bazą danych!');
 
@@ -96,7 +98,7 @@ async function connect() {
       await banUser(req, res, usersCollection, ObjectId);
     });
 
-    app.post('/addgame', async (req, res) => {
+    app.post('/addgame', upload.single('file'), async (req, res) => {
       await addGame(req, res, gamesCollection);
     });
 

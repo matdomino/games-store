@@ -4,12 +4,24 @@ const addGame = async (req, res, gamesCollection) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
     let correctData = true;
-    const { name, price, publisher, mainPhoto, photos, genres, description, releaseYear, location } = req.body;
 
     if (isValidLogin === true) {
       const role = req.cookies.roleType;
 
       if (role === "employee") {
+        if (!req.file || req.file.mimetype !== 'application/json') {
+          return res.status(400).json({ error: "Nieprawidłowy format pliku JSON." });
+        }
+        const jsonData = req.file.buffer.toString('utf8');
+        const gameData = JSON.parse(jsonData);
+        const { name, price, publisher, mainPhoto, photos, genres, description, releaseYear, location } = gameData;
+
+        const existingGame = await gamesCollection.findOne({ name: name });
+
+        if (existingGame) {
+          return res.status(400).json({ error: "Podana gra jest już w bazie." });
+        }
+
         if (!name || typeof(name) !== "string" ) {
           correctData = false;
         } else if (!price || typeof(price) !== "number") {
