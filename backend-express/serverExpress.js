@@ -31,6 +31,7 @@ const { changePassword } = require('./rest-api/changePassword');
 const { changeAdress } = require('./rest-api/changeAdress');
 const { changeEmail } = require('./rest-api/changeEmail');
 const { deleteAccount } = require('./rest-api/deleteAccount');
+const { addBalance } = require('./rest-api/addBalance');
 
 
 const app = express();
@@ -56,8 +57,11 @@ async function connect() {
     const db = client.db(dbName);
     const usersCollection = db.collection('users');
     const gamesCollection = db.collection('games');
-    const supportChatCollection = db.collection('support-chat');
-    const returnsCollection = db.collection('returns');
+    const pendingSupportCollection = db.collection('pending-support');
+    const closedSupportCollection = db.collection('closed-support');
+    const pendingReturnsCollection = db.collection('pending-returns');
+    const closedReturnsCollection = db.collection('closed-returns');
+    const transactionsCollection = db.collection('transactions-history');
 
     app.post('/login', async (req, res) => {
       await login(req, res, usersCollection, bcrypt, jwt, tokenKey);
@@ -163,6 +167,12 @@ async function connect() {
       deleteAccount(req, res, usersCollection, bcrypt)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.put('/addbalance', async (req, res) => {
+      addBalance(req, res, usersCollection, transactionsCollection)
+      .then(result => res.json(result))
+      .catch(error => res.status(error.status).json({ error: error.error }));
     });
 
     app.listen(port, () => {
