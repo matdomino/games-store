@@ -19,7 +19,7 @@ const verifyAuth = async (req, res) => {
   }
 
   try {
-    const decoded = await jwt.verify(accessToken, tokenKey)
+    const decoded = await jwt.verify(accessToken, tokenKey);
     if (user !== decoded.user || role !== decoded.role) {
       clearAllCookies(res);
       return res.status(401).json({ error: "Brak autoryzacji." });

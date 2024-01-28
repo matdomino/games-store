@@ -1,6 +1,6 @@
-const  { verifyAuth } = require('../auth');
+const { verifyAuth } = require('../auth');
 
-const banUser = async  (req, res, usersCollection, ObjectId) => {
+const banUser = async (req, res, usersCollection, ObjectId) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
 

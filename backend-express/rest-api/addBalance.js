@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const addBalance = async (req, res, usersCollection, transactionsCollection) => {
   return new Promise(async (resolve, reject) => {
@@ -26,7 +26,7 @@ const addBalance = async (req, res, usersCollection, transactionsCollection) => 
 
         if (paymentOption && balanceOption) {
           if (!correctPaymentOptions.includes(paymentOption) || isNaN(balanceOption) || !correctBalanceOptions.includes(balanceOption)) {
-            reject({ status: 400, error: "Niepoprawne opcje dla dodania środków." })
+            reject({ status: 400, error: "Niepoprawne opcje dla dodania środków." });
             return;
           }
 

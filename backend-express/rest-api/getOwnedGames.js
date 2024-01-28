@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const getOwnedGames = async (req, res, usersCollection) => {
   return new Promise(async (resolve, reject) => {

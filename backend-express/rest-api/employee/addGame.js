@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('../auth');
+const { verifyAuth } = require('../auth');
 
 const addGame = async (req, res, gamesCollection) => {
   try {
@@ -58,7 +58,7 @@ const addGame = async (req, res, gamesCollection) => {
           releaseYear: releaseYear,
           location: location,
           reviews: []
-        }
+        };
 
         if (correctData) {
           const AddGame = await gamesCollection.insertOne(game);

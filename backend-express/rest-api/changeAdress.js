@@ -36,7 +36,7 @@ const changeAdress = (req, res, usersCollection) => {
             home: home,
             flat: flat,
             postCode: postCode
-          }
+          };
 
           const update = await usersCollection.updateOne({ "username": username }, { $set: { address: newAddress } });
 

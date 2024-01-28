@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const getNotifications = async (req, res, usersCollection) => {
   try {

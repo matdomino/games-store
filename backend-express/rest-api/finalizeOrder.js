@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const finalizeOrder = async (req, res, usersCollection, transactionsCollection, gamesCollection, ObjectId) => {
   return new Promise(async (resolve, reject) => {
@@ -31,7 +31,7 @@ const finalizeOrder = async (req, res, usersCollection, transactionsCollection, 
             oldBalance: userData.walletBalance,
             newBalance: newBalance,
             billingInfo: userData.address
-          }
+          };
 
           const addTransaction = await transactionsCollection.insertOne(transaction);
 
@@ -41,7 +41,7 @@ const finalizeOrder = async (req, res, usersCollection, transactionsCollection, 
               name: item.name,
               transaction: addTransaction.insertedId
             }));
-  
+
             const newGames = [...userData.games, ...games];
 
             const updateUser = await usersCollection.updateOne({ _id: userData._id }, { $set: { walletBalance: newBalance, games: newGames, shoppingCart: [] }, $push: { transactions: addTransaction.insertedId } });

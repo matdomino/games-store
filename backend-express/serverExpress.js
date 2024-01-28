@@ -8,7 +8,6 @@ const cors = require('cors');
 const { MongoClient, ObjectId } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const tokenKey = require('./tokenKey');
-const  { clearAllCookies, verifyAuth } = require('./rest-api/auth');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
 const { logout } = require('./rest-api/logout');

@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const getGameDetails = async (req, res, gamesCollection, ObjectId) => {
   try {

@@ -1,4 +1,4 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const checkOut = async (req, res, usersCollection, gamesCollection, ObjectId) => {
   try {
@@ -23,7 +23,7 @@ const checkOut = async (req, res, usersCollection, gamesCollection, ObjectId) =>
         address: address,
         shoppingCart: shoppingCart,
         total: roundedTotal
-      }
+      };
 
       res.json(data);
     }

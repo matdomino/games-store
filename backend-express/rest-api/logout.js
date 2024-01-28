@@ -1,4 +1,4 @@
-const  { clearAllCookies } = require('./auth');
+const { clearAllCookies } = require('./auth');
 
 const logout = async (req, res) => {
   try {

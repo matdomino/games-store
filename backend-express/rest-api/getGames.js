@@ -1,11 +1,11 @@
-const  { verifyAuth } = require('./auth');
+const { verifyAuth } = require('./auth');
 
 const getGames = async (req, res, gamesCollection) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
     const { filterBy, sortBy, sortOrder, minPrice, maxPrice } = req.body;
 
-    filterByOptions = [
+    const filterByOptions = [
       "FPS",
       "RPG",
       "Przygodowe",
@@ -16,20 +16,20 @@ const getGames = async (req, res, gamesCollection) => {
       "Survival"
     ];
 
-    sortByOptions = [
+    const sortByOptions = [
       "name",
       "price",
       "releaseYear"
-    ]
+    ];
 
-    sortOrderOptions = [
+    const sortOrderOptions = [
       "asc",
       "desc"
-    ]
+    ];
 
     if (isValidLogin === true) {
-      let query = {};
-      const sortOptions = {}
+      const query = {};
+      const sortOptions = {};
       if (filterBy && filterByOptions.includes(filterBy)) {
         query.genres = { $in: [filterBy] };
       }
@@ -50,7 +50,7 @@ const getGames = async (req, res, gamesCollection) => {
 
       const games = await gamesCollection.aggregate([
         { $match: query },
-        { $addFields: { averageGrade: { $avg: "$reviews.grade" } } }, 
+        { $addFields: { averageGrade: { $avg: "$reviews.grade" } } },
         { $project: { _id: 1, name: 1, price: 1, genres: 1, averageGrade: 1, mainPhoto: 1, realseYear: 1 } },
         { $sort: sortOptions }
       ]).toArray();
