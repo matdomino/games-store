@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
@@ -18,6 +16,9 @@ const { banUser } = require('./rest-api/employee/banUser');
 const { addGame } = require('./rest-api/employee/addGame');
 const { getSupportList } = require('./rest-api/employee/getSupportList');
 const { respondToSupport } = require('./rest-api/employee/respondToSupport');
+const { getRefundsList } = require('./rest-api/employee/getRefundsList');
+const { respondToRefund } = require('./rest-api/employee/respondToRefund');
+const { getFullTransactionHistory } = require('./rest-api/employee/getFullTransactionHistory');
 const { getGames } = require('./rest-api/getGames');
 const { searchGames } = require('./rest-api/searchGames');
 const { getGameDetails } = require('./rest-api/getGameDetails');
@@ -43,6 +44,7 @@ const { sendSupportMsg } = require('./rest-api/sendSupportMsg');
 const { getHistory } = require('./rest-api/getHistory');
 const { getHistoryDetails } = require('./rest-api/getHistoryDetails');
 const { getSupportMsgs } = require('./rest-api/getSupportMsgs');
+const { getRefunds } = require('./rest-api/getRefunds');
 
 
 const app = express();
@@ -111,6 +113,18 @@ async function connect() {
 
     app.post('/respondtosupportmsg', async (req, res) => {
       await respondToSupport(req, res, pendingSupportCollection, closedSupportCollection, usersCollection, ObjectId);
+    });
+
+    app.get('/getrefundslist', async (req, res) => {
+      await getRefundsList(req, res, pendingReturnsCollection);
+    });
+
+    app.post('/respondtorefund', async (req, res) => {
+      await respondToRefund(req, res, pendingReturnsCollection, closedReturnsCollection, transactionsCollection, usersCollection, gamesCollection, ObjectId);
+    });
+
+    app.get('/transactionhistory', async (req, res) => {
+      await getFullTransactionHistory(req, res, transactionsCollection);
     });
 
     // --- USER ---
@@ -245,6 +259,12 @@ async function connect() {
 
     app.get('/getsupportmsgs/', async (req, res) => {
       getSupportMsgs(req, res, usersCollection, pendingSupportCollection, closedSupportCollection, ObjectId)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.get('/getrefunds/', async (req, res) => {
+      getRefunds(req, res, usersCollection, pendingReturnsCollection, closedReturnsCollection, ObjectId)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });

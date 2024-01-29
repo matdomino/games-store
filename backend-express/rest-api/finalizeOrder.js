@@ -5,6 +5,7 @@ const finalizeOrder = async (req, res, usersCollection, transactionsCollection, 
     try {
       const isValidLogin = await verifyAuth(req, res);
 
+
       if (isValidLogin === true) {
         const user = req.cookies.username;
 
@@ -15,6 +16,11 @@ const finalizeOrder = async (req, res, usersCollection, transactionsCollection, 
           const elemData = await gamesCollection.findOne({ _id: new ObjectId(elem) }, { projection: { _id: 1, name: 1, price: 1 } });
         return elemData;
         }));
+
+        if (shoppingCart.length === 0) {
+          reject({ status: 400, error: "Pusty koszyk." });
+          return;
+        }
 
         const total = shoppingCart.reduce((acc, elem) => acc + elem.price, 0);
         const roundedTotal = Number(total.toFixed(2));

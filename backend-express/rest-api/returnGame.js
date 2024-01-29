@@ -23,6 +23,7 @@ const returnGame = async (req, res, usersCollection, pendingReturnsCollection) =
             const gameReturn = {
               user: userProfile._id,
               topic: `Zwrot gry: ${gameId}`,
+              game: gameId,
               comment: comment,
               transaction: game.transaction,
               date: new Date()
