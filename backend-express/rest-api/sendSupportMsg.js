@@ -35,6 +35,13 @@ const sendSupportMsg = async (req, res, usersCollection, pendingSupportCollectio
             const addMsg = await pendingSupportCollection.insertOne(supportMsg);
 
             if (addMsg.acknowledged === true) {
+              const updateUser = await usersCollection.updateOne({ _id: userProfile._id }, { $push: { support: addMsg.insertedId } });
+
+              if (!updateUser.acknowledged === true) {
+                resolve({ status: 500, error: "Wystąpił błąd serwera podczas aktualizacji użytkownika." });
+                return;
+              }
+
               resolve({ status: "success" });
             } else {
               reject({ status: 400, error: "Wiadomość została już wysłana." });

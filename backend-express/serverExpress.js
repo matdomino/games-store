@@ -16,6 +16,8 @@ const { getUsers } = require('./rest-api/employee/getUsersList');
 const { getUser } = require('./rest-api/employee/getUser');
 const { banUser } = require('./rest-api/employee/banUser');
 const { addGame } = require('./rest-api/employee/addGame');
+const { getSupportList } = require('./rest-api/employee/getSupportList');
+const { respondToSupport } = require('./rest-api/employee/respondToSupport');
 const { getGames } = require('./rest-api/getGames');
 const { searchGames } = require('./rest-api/searchGames');
 const { getGameDetails } = require('./rest-api/getGameDetails');
@@ -40,6 +42,7 @@ const { returnGame } = require('./rest-api/returnGame');
 const { sendSupportMsg } = require('./rest-api/sendSupportMsg');
 const { getHistory } = require('./rest-api/getHistory');
 const { getHistoryDetails } = require('./rest-api/getHistoryDetails');
+const { getSupportMsgs } = require('./rest-api/getSupportMsgs');
 
 
 const app = express();
@@ -100,6 +103,14 @@ async function connect() {
 
     app.post('/addgame', upload.single('file'), async (req, res) => {
       await addGame(req, res, gamesCollection);
+    });
+
+    app.get('/getsupportlist', async (req, res) => {
+      await getSupportList(req, res, pendingSupportCollection);
+    });
+
+    app.post('/respondtosupportmsg', async (req, res) => {
+      await respondToSupport(req, res, pendingSupportCollection, closedSupportCollection, usersCollection, ObjectId);
     });
 
     // --- USER ---
@@ -228,6 +239,12 @@ async function connect() {
 
     app.get('/gettransactiondetails/:transId', async (req, res) => {
       getHistoryDetails(req, res, usersCollection, transactionsCollection, ObjectId)
+        .then(result => res.json(result))
+        .catch(error => res.status(error.status).json({ error: error.error }));
+    });
+
+    app.get('/getsupportmsgs/', async (req, res) => {
+      getSupportMsgs(req, res, usersCollection, pendingSupportCollection, closedSupportCollection, ObjectId)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
