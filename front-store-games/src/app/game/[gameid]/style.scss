@@ -1,0 +1,108 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../../_variables.scss';
+
+body {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $vivid-violet100;
+    border-radius: 0.2rem;
+  }
+
+  
+  main {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .game {
+    h2 {
+      font-size: xx-large;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: large;
+      color: $vivid-violet300;
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      margin-bottom: 1rem;
+    }
+
+    .genres {
+      margin: 1rem 0;
+      span {
+        font-size: larger;
+        color: $vivid-violet500;
+      }
+
+      li {
+        margin: 0 1rem;
+      }
+    }
+
+    .reviews {
+      h3 {
+        color: $vivid-violet500;
+      }
+
+      li {
+        margin: 1rem;
+
+        h4{
+          color: $vivid-violet300;
+        }
+      }
+    }
+
+    .price {
+      margin-bottom: 1rem;
+      span {
+        font-size: large;
+        color: $vivid-violet300;
+        margin-right: 1rem;
+      }
+
+      button {
+        padding: 0.2rem 0.5rem;
+        background-color: $vivid-violet600;
+        border: 0.1rem solid $vivid-violet100;
+        border-radius: 0.3rem;
+      }
+    }
+
+    min-width: 30rem;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      button {
+        padding: 0 1.5rem;
+        font-weight: 900;
+        font-size: 1.5rem;
+      }
+      span {
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Terraria",
+    "price": 45.99,
+    "publisher": "Re-Logic",
+    "mainPhoto": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg?t=1666290860",
+    "photos": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/ss_8c03886f214d2108cafca13845533eaa3d87d83f.600x338.jpg?t=1666290860",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/ss_ae168a00ab08104ba266dc30232654d4b3c919e5.600x338.jpg?t=1666290860",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/ss_75ea9a7e39eb34b40efa1e6dfd2536098dc4734b.600x338.jpg?t=1666290860"
+    ],
+    "genres": [
+        "Survival",
+        "Sandbox"
+    ],
+    "description": "Kop, walcz, odkrywaj, buduj! Nie ma nic niemożliwego w tej przepełnionej akcją grze przygodowej. Dostępny jest także czteropak!",
+    "releaseYear": 2011,
+    "location": "/sciezkadopliku/"
+}

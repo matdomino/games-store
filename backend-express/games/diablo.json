@@ -1,0 +1,17 @@
+{
+    "name": "Diablo IV",
+    "price": 349.00,
+    "publisher": "Blizzard Entertainment, Inc.",
+    "mainPhoto": "https://cdn.cloudflare.steamstatic.com/steam/apps/2344520/header.jpg?t=1706032937",
+    "photos": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/2344520/ss_89bab75878a11679207200584db2204596442d93.600x338.jpg?t=1706032937",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/2344520/ss_45b8645d8f0f96b4ec9f01dcbcf308319de6ae88.600x338.jpg?t=1706032937",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/2344520/ss_ac73795f99b8df62080ee968467e68f2654ab29e.600x338.jpg?t=1706032937"
+    ],
+    "genres": [
+        "RPG"
+    ],
+    "description": "Dołącz do walki o Sanktuarium w Diablo IV, wyjątkowej grze przygodowej RPG. Przejdź docenioną przez krytyków kampanię i nową zawartość sezonową.",
+    "releaseYear": 2023,
+    "location": "/sciezkadopliku/"
+}

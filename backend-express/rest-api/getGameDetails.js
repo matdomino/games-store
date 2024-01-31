@@ -3,7 +3,7 @@ const { verifyAuth } = require('./auth');
 const getGameDetails = async (req, res, gamesCollection, ObjectId) => {
   try {
     const isValidLogin = await verifyAuth(req, res);
-    const { gameId } = req.body;
+    const gameId = req.params.gameId;
 
     if (isValidLogin === true) {
       const game = await gamesCollection.findOne({ _id: new ObjectId(gameId) });

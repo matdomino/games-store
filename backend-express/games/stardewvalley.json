@@ -1,0 +1,19 @@
+{
+    "name": "Stardew Valley",
+    "price": 53.99,
+    "publisher": "ConcernedApe",
+    "mainPhoto": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg?t=1666917466",
+    "photos": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/ss_b887651a93b0525739049eb4194f633de2df75be.600x338.jpg?t=1666917466",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/ss_9ac899fe2cda15d48b0549bba77ef8c4a090a71c.600x338.jpg?t=1666917466",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/ss_4fa0866709ede3753fdf2745349b528d5e8c4054.600x338.jpg?t=1666917466"
+    ],
+    "genres": [
+        "Sandbox",
+        "Przygodowe",
+        "Symulatory"
+    ],
+    "description": "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?",
+    "releaseYear": 2016,
+    "location": "/sciezkadopliku/"
+}

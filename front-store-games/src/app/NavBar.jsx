@@ -1,6 +1,6 @@
 export default function NavBar(user) {
   return (
-      <div className="navbar-navBar">
+      <div className="navbar-navBar bg-gun-powder-950">
         <div className="flex justify-between w-3/5">
           <a href="/store">SKLEP</a>
           <a href="/library">BIBLIOTEKA</a>

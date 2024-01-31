@@ -13,6 +13,8 @@ const verifyAuth = async (req, res) => {
   const accessToken = req.cookies.accessToken;
   const role = req.cookies.roleType;
 
+  console.log(user, accessToken, role);
+
   if (!user || !accessToken || !role) {
     clearAllCookies(res);
     return res.status(401).json({ error: "Brak autoryzacji." });

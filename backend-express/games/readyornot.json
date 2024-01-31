@@ -1,0 +1,19 @@
+{
+    "name": "Ready or Not",
+    "price": 169.99,
+    "publisher": "VOID Interactive",
+    "mainPhoto": "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/header.jpg?t=1705678438",
+    "photos": [
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/ss_beb0f53b0db7e85ba9e7cf99e8511e60156f19a4.600x338.jpg?t=1705678438",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/ss_810cdf4f23943a805d5999ba5556c1078f017b1a.600x338.jpg?t=1705678438",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/ss_873f74f54ca8ce5f4ac7d675563129417a1fd0c9.600x338.jpg?t=1705678438"
+    ],
+    "genres": [
+        "FPS",
+        "Symulatory",
+        "Drużynowe"
+    ],
+    "description": "Ready or Not to dynamiczna, taktyczna strzelanka FPP przedstawiająca operacje współczesnych oddziałów policyjnych SWAT, które muszą neutralizować przestępców i stawiać czoła niebezpiecznym sytuacjom.",
+    "releaseYear": 2023,
+    "location": "/sciezkadopliku/"
+}

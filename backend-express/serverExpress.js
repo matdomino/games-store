@@ -137,7 +137,7 @@ async function connect() {
       await searchGames(req, res, gamesCollection);
     });
 
-    app.get('/gamedetails', async(req, res) => {
+    app.get('/gamedetails/:gameId', async(req, res) => {
       await getGameDetails(req, res, gamesCollection, ObjectId);
     });
 
