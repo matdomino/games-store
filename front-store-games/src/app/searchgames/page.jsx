@@ -9,6 +9,7 @@ import NavBar from "../NavBar";
 export default function Store() {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
+  console.log(user);
 
   const userName = user.username;
   const balance = user.walletBalance;

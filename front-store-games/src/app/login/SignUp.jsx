@@ -8,6 +8,8 @@ import UserContext from "../context/UserContext";
 
 const REGISTER_URL = '/register';
 
+const inputStyle = "bg-gun-powder-950 shadow-custom border-1 rounded-custom pl-2";
+
 export default function SignUp ({ toggleForm }) {
   const { setUser } = useContext(UserContext);
   const router = useRouter();
@@ -89,150 +91,163 @@ export default function SignUp ({ toggleForm }) {
   const { values, handleChange, handleSubmit, errors } = formik;
 
   return(
-    <div>
+    <div className="border-1 border-vivid-violet-300 rounded-custom shadow-custom p-4" style={{ width: '40rem' }}>
       <form onSubmit={handleSubmit}>
-        <h2>Zarejestruj się</h2>
-        <div className="general">
-          <div>
-            <label>
-              Email:
-            </label>
-            <input
-              type="text"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-            />
+        <h2 className="text-2xl font-bold pb-4">Zarejestruj się</h2>
+        <div className="flex w-full justify-between">
+          <div className="adress w-1/2 mr-2">
+            <div className="pb-2 flex flex-col">
+              <label>
+                Imię:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="firstName"
+                value={values.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Nazwisko:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="lastName"
+                value={values.lastName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Miasto:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="city"
+                value={values.city}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Ulica (opcjonalne):
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="street"
+                value={values.street}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Nr. domu:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="home"
+                value={values.home}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Nr mieszkania (opcjonalne):
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="flat"
+                value={values.flat}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Kod pocztowy:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="postCode"
+                value={values.postCode}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div>
-            <label>
-              Nazwa użytkownika:
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={values.username}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Hasło:
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={values.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Powtórz hasło:
-            </label>
-            <input
-              type="password"
-              name="passwordRep"
-              value={values.passwordRep}
-              onChange={handleChange}
-            />
+          <div className="adress w-1/2 ml-2">
+            <div className="pb-2 flex flex-col">
+              <label>
+                Email:
+              </label>
+              <input
+              className={inputStyle}
+                type="text"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Nazwa użytkownika:
+              </label>
+              <input
+                className={inputStyle}
+                type="text"
+                name="username"
+                value={values.username}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Hasło:
+              </label>
+              <input
+                className={inputStyle}
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="pb-2 flex flex-col">
+              <label>
+                Powtórz hasło:
+              </label>
+              <input
+                className={inputStyle}
+                type="password"
+                name="passwordRep"
+                value={values.passwordRep}
+                onChange={handleChange}
+              />
+            </div>
           </div>
         </div>
-        <div className="adress">
-          <div>
-            <label>
-              Imię:
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              value={values.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Nazwisko:
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              value={values.lastName}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Miasto:
-            </label>
-            <input
-              type="text"
-              name="city"
-              value={values.city}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Ulica (opcjonalne):
-            </label>
-            <input
-              type="text"
-              name="street"
-              value={values.street}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Nr. domu:
-            </label>
-            <input
-              type="text"
-              name="home"
-              value={values.home}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Nr mieszkania (opcjonalne):
-            </label>
-            <input
-              type="text"
-              name="flat"
-              value={values.flat}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>
-              Kod pocztowy:
-            </label>
-            <input
-              type="text"
-              name="postCode"
-              value={values.postCode}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <button type="submit">Zarejestruj się</button>
-        <div>
+        <button type="submit" className="border-1 border-vivid-violet-900 p-2 rounded-custom text-vivid-violet-900 bg-vivid-violet-300 mt-2">Zarejestruj się</button>
+        <div className="pb-2 pt-2">
           <a href="#" onClick={toggleForm}>Masz już konto? Kliknij tutaj.</a>
         </div>
-        <div className='errs'>
-          <span>{errors.email}</span>
-          <span>{errors.username}</span>
-          <span>{errors.password}</span>
-          <span>{errors.passwordRep}</span>
-          <span>{errors.firstName}</span>
-          <span>{errors.lastName}</span>
-          <span>{errors.city}</span>
-          <span>{errors.street}</span>
-          <span>{errors.home}</span>
-          <span>{errors.flat}</span>
-          <span>{errors.postCode}</span>
+        <div className="errs flex flex-col">
+          <span className="text-xs text-vivid-violet-200">{errors.email}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.username}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.password}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.passwordRep}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.firstName}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.lastName}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.city}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.street}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.home}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.flat}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.postCode}</span>
         </div>
       </form>
     </div>

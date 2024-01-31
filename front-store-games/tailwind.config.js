@@ -38,13 +38,19 @@ module.exports = {
       boxShadow: {
         custom: '0rem 0rem 0.5rem theme("colors.vivid-violet.500")'
       },
+      borderWidth: {
+        '1': '0.1rem',
+      },
+      borderRadius: {
+        'custom': '0.25rem',
+      }
     },
   },
   plugins: [
     function({ addComponents }) {
       addComponents({
         '.navbar-navBar': {
-          '@apply shadow-custom p-2 flex justify-between items-center fixed top-0 w-full': {},
+          '@apply shadow-custom p-2 pl-6 pr-6 flex justify-between items-center fixed top-0 w-full': {},
         }
       });
     }

@@ -8,6 +8,8 @@ import UserContext from "../context/UserContext";
 
 const LOGIN_URL = '/login';
 
+const inputStyle = "bg-gun-powder-950 shadow-custom border-1 rounded-custom pl-2";
+
 export default function SignIn ({ toggleForm }) {
   const { setUser } = useContext(UserContext);
   const router = useRouter();
@@ -56,38 +58,40 @@ export default function SignIn ({ toggleForm }) {
   const { values, handleChange, handleSubmit, errors } = formik;
 
   return(
-    <div>
+    <div className="border-1 border-vivid-violet-300 rounded-custom shadow-custom p-4" style={{ width: '25rem' }}>
       <form onSubmit={handleSubmit}>
-        <h2>Zaloguj się</h2>
-        <div>
+        <h2 className="text-2xl font-bold pb-4">Zaloguj się</h2>
+        <div className="pb-2 flex flex-col">
           <label>
             Nazwa użytkownika:
           </label>
           <input
+            className={inputStyle}
             type="text"
             name="username"
             value={values.username}
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="pb-2 flex flex-col">
           <label>
             Hasło:
           </label>
           <input
+            className={inputStyle}
             type="password"
             name="password"
             value={values.password}
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Zaloguj się</button>
-        <div>
+        <button type="submit" className="border-1 border-vivid-violet-900 p-2 rounded-custom text-vivid-violet-900 bg-vivid-violet-300 mt-2">Zaloguj się</button>
+        <div className="pb-2 pt-2">
           <a href="#" onClick={toggleForm}>Nie masz konta? Kliknij tutaj.</a>
         </div>
-        <div className='errs'>
-          <span>{errors.username}</span>
-          <span>{errors.password}</span>
+        <div className="errs flex flex-col">
+          <span className="text-xs text-vivid-violet-200">{errors.username}</span>
+          <span className="text-xs text-vivid-violet-200">{errors.password}</span>
         </div>
       </form>
     </div>
