@@ -27,11 +27,11 @@ export default function Login() {
 
   return (
     <>
-      <div className="navBar">
-        <span className="name">Games Store</span>
-        <a href="https://github.com/matdomino" target="_blank">Mateusz Domino 2024</a>
+      <div className="navbar-navBar">
+        <span className="name text-xl font-bold text-primary50">Games Store</span>
+        <a href="https://github.com/matdomino" target="_blank" className="text-primary200">Mateusz Domino 2024</a>
       </div>
-      <div className="form">
+      <div className="form flex justify-center items-center min-h-screen">
         { form ? <SignIn toggleForm={handleToggleForm} /> : <SignUp toggleForm={handleToggleForm} /> }
       </div>
     </>
