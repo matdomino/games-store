@@ -113,11 +113,11 @@ export default function Profile() {
       case "EmailChange":
         return <EmailChange backFun={toggleToUserInfoComponent} />;
       case "UsernameChange":
-        return <UsernameChange />;
+        return <UsernameChange backFun={toggleToUserInfoComponent} />;
       case "AddressChange":
-        return <AddressChange />;
+        return <AddressChange backFun={toggleToUserInfoComponent} />;
       case "PasswordChange":
-        return <PasswordChange />;
+        return <PasswordChange backFun={toggleToUserInfoComponent} />;
       default:
         return <UserInfoComponent user={userInfo} />;
     }
