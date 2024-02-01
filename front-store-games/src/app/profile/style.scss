@@ -37,6 +37,16 @@ body {
       box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
       border-radius: 0.25rem ;
 
+      .goBack {
+        all: unset;
+        font-size:x-large;
+        font-weight: 900;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
       h3 {
         font-size: x-large;
         font-weight: 700;

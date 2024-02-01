@@ -68,6 +68,10 @@ export default function Profile() {
     setComponent("PasswordChange");
   };
 
+  const toggleToUserInfoComponent = () => {
+    setComponent('UserInfoComponent');
+  };
+
   const UserInfoComponent = ({ user }) => {
     return(
       <div className="info">
@@ -107,7 +111,7 @@ export default function Profile() {
   const renderComponent = () => {
     switch (component) {
       case "EmailChange":
-        return <EmailChange />;
+        return <EmailChange backFun={toggleToUserInfoComponent} />;
       case "UsernameChange":
         return <UsernameChange />;
       case "AddressChange":

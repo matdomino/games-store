@@ -1,15 +1,13 @@
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import UserContext from "../context/UserContext";
 import axios from "@/api/axios";
 
 const EMAIL_CHANGE = '/changeemail';
 
 const inputStyle = "bg-gun-powder-950 shadow-custom border-1 rounded-custom pl-2";
 
-export default function EmailChange () {
+export default function EmailChange ({ backFun }) {
   const router = useRouter();
 
   const initialValues = {
@@ -31,7 +29,6 @@ export default function EmailChange () {
     try {
       const res = await axios.put(EMAIL_CHANGE, userData, { withCredentials: true });
 
-      console.log(res.data);
       if (res.data.status === "success") {
         router.push('/');
       }
@@ -56,6 +53,7 @@ export default function EmailChange () {
 
   return(
     <form className="form" onSubmit={handleSubmit}>
+      <button className="goBack" onClick={backFun}>←</button>
       <div className="input">
         <h3>Zmień email:</h3>
         <label>
@@ -79,7 +77,7 @@ export default function EmailChange () {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Zarejestruj się</button>
+      <button type="submit">Zmień email</button>
       <div className="errs">
         <span className="text-xs text-vivid-violet-200">{errors.email}</span>
         <span className="text-xs text-vivid-violet-200">{errors.password}</span>
