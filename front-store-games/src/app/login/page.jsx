@@ -6,6 +6,7 @@ import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import './style.scss';
 
 export default function Login() {
   const [ form, setForm ] = useState(true);

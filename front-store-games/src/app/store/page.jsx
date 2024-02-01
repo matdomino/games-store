@@ -6,6 +6,9 @@ import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 import axios from "@/api/axios";
+import './style.scss';
+import FilterForm from "./FilterForm";
+
 
 const GAMES_URL = '/storegames';
 
@@ -22,10 +25,18 @@ export default function Store() {
       } else {
         alert('Wystąpił błąd podczas przetwarzania żądania.')
       }
-    } catch {
-      alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.')
+    } catch (err) {
+      if (err.response && err.response.data.error) {
+        if (err.response.status === 401) {
+          router.push('/');
+        }
+        alert(err.response.data.error);
+      } else {
+        alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
+      }
     }
-  };
+  }
+
 
   console.log(games);
 
@@ -44,26 +55,45 @@ export default function Store() {
     getGames(initialSearchBody);
   }, []);
 
+  const redirectToGame = (gameId) => {
+    router.push(`/game/${gameId}`);
+  }
+
+  const GamesList = ({ games }) => {
+    return(
+      <ul>
+        {games.map((elem, index) => (
+          <li key={index} onClick={() => redirectToGame(elem._id)}>
+            <div>
+              <h3>{elem.name}</h3>
+              <img src={elem.mainPhoto} alt="Zdjęcie" />
+              <div className="price">Cena: {elem.price} zł</div>
+              <div className="avgGrade">Średnia ocen: {elem.averageGrade}</div>
+              <ul>
+                {elem.genres.map((elem, index) => (
+                  <span key={index}>{elem}</span>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   return (
     <div>
       {user.username && <NavBar user={user} />}
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="flex w-3/5 justify-center h-full">
-          <div className="w-1/3 mr-2 border-l-2 border-r-2 border-white border-solid border-opacity-20 h-full">
-            <div>
-              lewo
-            </div>
-            <div>
-              <ul>
-                
-              </ul>
-            </div>
+      <main>
+        <div className="gamesListClass">
+          <div className="options">
+            <FilterForm className="FilterForm" setGames={setGames} />
           </div>
-          <div className="w-2/3 ml-2 border-l-2 border-r-2 border-white border-solid border-opacity-20 h-full">
-            test-prawo
+          <div className="games">
+            { games.length > 0 ? <GamesList games={games} /> : null }
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

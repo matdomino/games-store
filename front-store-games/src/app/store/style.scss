@@ -1,0 +1,122 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../_variables.scss';
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $vivid-violet100;
+    border-radius: 0.2rem;
+  }
+
+  main {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .gamesListClass {
+      width: 80%;
+      min-width: 40rem;
+      max-width: 60rem;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+
+      .options {
+        width: 40%;
+
+        form {
+          padding: 1rem;
+          width: 100%;
+          border-radius: 0.25rem;
+          border: 0.1rem solid;
+          box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+
+          h3 {
+            color: $vivid-violet300;
+            font-size: larger;
+          }
+          .formOptions {
+            div {
+              margin-top: 1rem;
+              display: flex;
+              flex-direction: column;
+            }
+          }
+
+          button {
+            margin-top: 1rem;
+            border: 0.1rem solid;
+            padding: 0.2rem 1rem;
+            border-radius: 0.25rem;
+            background-color: $vivid-violet500;
+          }
+        }
+        
+      }
+
+      .games {
+        margin-left: 1rem;
+        width: 60%;
+
+        ul {
+          li {
+            padding: 1rem 0;
+            border: 0.1rem solid;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+            h3 {
+              margin-left: 1rem;
+              color: $vivid-violet300;
+              font-size: larger;
+            }
+
+            img {
+              margin: 1rem 0;
+              height: auto;
+              width: 100%;
+            }
+
+            .price {
+              margin-left: 1rem;
+              margin-bottom: 0.5rem;
+              color: $vivid-violet500;
+            }
+
+            .avgGrade {
+              margin-left: 1rem;
+              color: $vivid-violet300;
+            }
+
+            ul {
+              margin-left: 1rem;
+              span {
+                margin-right: 1rem;
+              }
+            }
+
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
