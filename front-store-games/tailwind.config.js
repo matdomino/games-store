@@ -53,6 +53,9 @@ module.exports = {
           '@apply shadow-custom p-2 pl-6 pr-6 flex justify-between items-center fixed top-0 w-full z-10': {},
         }
       });
-    }
-  ],
+    },
+    require('postcss-nesting'),
+    require('tailwindcss'),
+    require('autoprefixer')
+  ]
 }

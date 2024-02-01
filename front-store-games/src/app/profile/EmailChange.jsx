@@ -32,8 +32,11 @@ export default function EmailChange ({ backFun }) {
       if (res.data.status === "success") {
         router.push('/');
       }
-    } catch(err) {
+    } catch (err) {
       if (err.response && err.response.data.error) {
+        if (err.response.status === 401) {
+          router.push('/');
+        }
         alert(err.response.data.error);
       } else {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
