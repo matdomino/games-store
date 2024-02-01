@@ -1,0 +1,136 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../_variables.scss';
+
+body {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $vivid-violet100;
+    border-radius: 0.2rem;
+  }
+
+  main {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .form {
+      min-width: 25rem;
+      padding: 1rem;
+      border: 0.1rem solid ;
+      box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+      border-radius: 0.25rem ;
+
+      h3 {
+        font-size: x-large;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .input {
+        display: flex;
+        flex-direction: column;
+
+        input {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      .errs {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      button {
+        margin-top: 0.5rem;
+        padding: 0.2rem 1rem;
+        background-color: $vivid-violet600;
+        border: 0.1rem solid $vivid-violet100;
+        border-radius: 0.3rem;
+      }
+    }
+
+    .info {
+      min-width: 30rem;
+      padding: 1rem;
+      border: 0.1rem solid ;
+      box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+      border-radius: 0.25rem ;
+
+      h3 {
+        font-size: xx-large;
+        font-weight: 700;
+      }
+
+      button {
+        padding: 0.2rem 1rem;
+        background-color: $vivid-violet600;
+        border: 0.1rem solid $vivid-violet100;
+        border-radius: 0.3rem;
+      }
+
+      .generalInfo {
+        margin-bottom: 2rem;
+        h4 {
+          font-size: large;
+          color: $vivid-violet400;
+        }
+
+        div {
+          margin-bottom: 1rem;
+        }
+
+        .email {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .username {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .pass {
+        margin-top: 2rem;
+      }
+
+      .Address {
+        h4 {
+          font-size: large;
+          color: $vivid-violet400;
+        }
+        .addressInfo {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+
+          button {
+            position: absolute;
+            top: 1.2rem;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
