@@ -52,6 +52,10 @@ export default function Support() {
   useEffect(() => {
   }, [pending, closed]);
 
+  const sendMsg = () => {
+    router.push('/sendsupportmsg');
+  }
+
   return (
     <>
       <div>
@@ -88,7 +92,7 @@ export default function Support() {
           </div>
         </div>
       </main>
-      <button onClick={"handleSendQuery"}>Wyślij zapytanie</button>
+      <button onClick={sendMsg}>Wyślij zapytanie</button>
     </>
   );
 }
