@@ -6,7 +6,7 @@ import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 
-export default function Store() {
+export default function Wallet() {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   console.log(user);

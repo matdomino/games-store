@@ -11,9 +11,6 @@ export default function ShoppingCart() {
   const router = useRouter();
   console.log(user);
 
-  const userName = user.username;
-  const balance = user.walletBalance;
-
   useEffect(() => {
     if (Object.keys(user).length === 0) {
       const isLoggedIn = setUserData(setUser);
