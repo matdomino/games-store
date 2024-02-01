@@ -5,24 +5,20 @@ import { useRouter } from "next/navigation";
 import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
+import axios from "@/api/axios";
 
-const GAMES_URL = '//storegames';
+const GAMES_URL = '/storegames';
 
 export default function Store() {
   const { user, setUser } = useContext(UserContext);
   const [ games, setGames ] = useState([]);
   const router = useRouter();
 
-  const userName = user.username;
-  const balance = user.walletBalance;
-
   const getGames = async (body) => {
     try {
-      const res = await axios.get(GAMES_URL, { withCredentials: true, data: body });
-      console.log(res.data);
-      if (res.data.status) {
+      const res = await axios.post(GAMES_URL, body, { withCredentials: true });
+      if (res.data.status === "success") {
         setGames(res.data.games);
-        console.log(games);
       } else {
         alert('Wystąpił błąd podczas przetwarzania żądania.')
       }
@@ -30,6 +26,8 @@ export default function Store() {
       alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.')
     }
   };
+
+  console.log(games);
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {

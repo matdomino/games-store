@@ -129,11 +129,11 @@ async function connect() {
 
     // --- USER ---
 
-    app.get('/storegames', async (req, res) => {
+    app.post('/storegames', async (req, res) => {
       await getGames(req, res, gamesCollection);
     });
 
-    app.get('/searchgames', async (req, res) => {
+    app.post('/searchgames', async (req, res) => {
       await searchGames(req, res, gamesCollection);
     });
 
