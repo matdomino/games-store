@@ -87,7 +87,7 @@ export default function Store() {
       <main>
         <div className="gamesListClass">
           <div className="options">
-            <FilterForm className="FilterForm" setGames={setGames} />
+            { games.length > 0 ? <FilterForm className="FilterForm" setGames={setGames} /> : null }
           </div>
           <div className="games">
             { games.length > 0 ? <GamesList games={games} /> : null }

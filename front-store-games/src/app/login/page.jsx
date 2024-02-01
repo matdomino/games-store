@@ -19,6 +19,8 @@ export default function Login() {
       if (isLoggedIn) {
         router.push('/store');
       }
+    } else {
+      router.push('/store');
     }
   }, []);
 
