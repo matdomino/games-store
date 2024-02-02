@@ -54,6 +54,7 @@ export default function ShoppingCart() {
 
       if (res.status === 200) {
         alert('Twoje zamówienie zostało zrealizowane!')
+        setReload(!reload);
       }
     } catch (err) {
       if (err.response && err.response.data.error) {
