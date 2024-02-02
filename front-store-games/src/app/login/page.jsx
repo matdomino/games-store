@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
+import cookie from 'js-cookie';
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import './style.scss';
@@ -14,12 +15,12 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    if (Object.keys(user).length === 0) {
-      const isLoggedIn = setUserData(setUser);
-      if (isLoggedIn) {
-        router.push('/store');
-      }
-    } else {
+    const userName = cookie.get('username');
+    const role = cookie.get('roleType');
+    const walletBalance = cookie.get('walletBalance');
+
+    if (userName && role && walletBalance) {
+      alert('pushuje na store')
       router.push('/store');
     }
   }, []);

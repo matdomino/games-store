@@ -7,6 +7,7 @@ import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 import axios from "@/api/axios";
 import ReviewGame from "./reviewGame";
+import ReturnGame from "./returnGame";
 import "./style.scss"
 
 const GAMES_LIBRARY = '/getownedgames';
@@ -124,6 +125,9 @@ export default function Library() {
         </div>
         <div className="review">
           <ReviewGame elemId={selectedRef.current} />
+        </div>
+        <div className="return">
+          <ReturnGame elemId={selectedRef.current} />
         </div>
       </>
     );

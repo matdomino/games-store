@@ -10,21 +10,14 @@ export default function App() {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   const userName = cookie.get('username');
+  const role = cookie.get('roleType');
+  const walletBalance = cookie.get('walletBalance');
 
   useEffect(() => {
-    if (!userName) {
-      setUser({});
-      router.push('/login');
-    }
-    if (Object.keys(user).length === 0) {
-      const isLoggedIn = setUserData(setUser);
-      if (isLoggedIn) {
-        router.push('/store');
-      } else {
-        router.push('/login');
-      }
+    if (userName && role && walletBalance) {
+      router.push('/store');
     } else {
-      router.push('/login');
+      router.push('login')
     }
   }, []);
 }
