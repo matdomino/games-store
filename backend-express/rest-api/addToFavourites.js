@@ -3,7 +3,7 @@ const { verifyAuth } = require('./auth');
 const addToFavourites = async (req, res, usersCollection, ObjectId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const gameId = req.params.gameId;
+      const { gameId } = req.body;
       const isValidLogin = await verifyAuth(req, res);
 
       if (isValidLogin === true) {

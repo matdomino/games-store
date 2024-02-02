@@ -221,7 +221,7 @@ async function connect() {
         .catch(error => res.status(error.status).json({ error: error.error }));
     });
 
-    app.post('/addtofavourites/:gameId', async (req, res) => {
+    app.post('/addtofavourites', async (req, res) => {
       addToFavourites(req, res, usersCollection, ObjectId)
         .then(result => res.json(result))
         .catch(error => res.status(error.status).json({ error: error.error }));
