@@ -13,6 +13,7 @@ export default function App() {
 
   useEffect(() => {
     if (!userName) {
+      setUser({});
       router.push('/login');
     }
     if (Object.keys(user).length === 0) {
@@ -22,6 +23,8 @@ export default function App() {
       } else {
         router.push('/login');
       }
+    } else {
+      router.push('/login');
     }
   }, []);
 }
