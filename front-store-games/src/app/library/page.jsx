@@ -17,6 +17,7 @@ export default function Library() {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
   const [ games, setGames ] = useState([]);
+  const [ selectedDetails, setSelectedDetails ] = useState(null);
   const [ refresh, setRefresh ] = useState(false);
   const [ favGames, setFavGames ] = useState([]);
   const [ type, setType ] = useState(null);
@@ -53,13 +54,37 @@ export default function Library() {
     }
   };
 
-  const handleClickFavourite = (elemId) => {
+  const getGamesDetails = async (elemId) => {
+    const GAME_URL = `/gamedetails/${elemId}`
+
+    try {
+      const res = await axios.get(GAME_URL, { withCredentials: true });
+      if (res.data.status === "success") {
+        setSelectedDetails(res.data.game);
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.message.includes('Network Error')) {
+        alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
+      } else if (err.response.status == 500) {
+        setType(null);
+      } else if (err.response.status == 404) {
+        setType(null);
+      } else {
+        router.push('/');
+      } 
+    }
+  };
+
+  const handleClickFavourite = async (elemId) => {
     selectedRef.current = elemId;
+    await getGamesDetails(elemId);
     setType("fav");
   };
 
-  const handleClick = (elemId) => {
+  const handleClick = async (elemId) => {
     selectedRef.current = elemId;
+    await getGamesDetails(elemId);
     setType("normal");
   };
 
@@ -120,6 +145,7 @@ export default function Library() {
     return(
       <>
         <h3>Opcje:</h3>
+        <img src={selectedDetails.mainPhoto} alt="" />
         <div>
           <button className="fav" onClick={addTofav}>{type === "normal" ? "Dodaj do ulubionych" : "Usuń z ulubionych"}</button>
         </div>

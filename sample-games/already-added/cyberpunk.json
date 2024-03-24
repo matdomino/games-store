@@ -4,9 +4,9 @@
     "publisher": "CD PROJEKT RED",
     "mainPhoto": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg?t=1702306332",
     "photos": [
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.600x338.jpg?t=1702306332",
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_e5a94665dbfa5a30931cff2f45cdc0ebea9fcebb.600x338.jpg?t=1702306332",
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_429db1d013a0366417d650d84f1eff02d1a18c2d.600x338.jpg?t=1702306332"
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.1920x1080.jpg?t=1702306332",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_e5a94665dbfa5a30931cff2f45cdc0ebea9fcebb.1920x1080.jpg?t=1706698946",
+        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_429db1d013a0366417d650d84f1eff02d1a18c2d.1920x1080.jpg?t=1706698946"
     ],
     "genres": [
         "RPG",

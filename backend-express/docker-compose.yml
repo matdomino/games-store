@@ -10,3 +10,5 @@ services:
       MONGO_INITDB_DATABASE: games-store-db
     ports:
       - "27017:27017"
+    volumes:
+      - ./dbInit.mongodb.js:/setup/dbInit.mongodb.js
