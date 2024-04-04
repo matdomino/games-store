@@ -7,7 +7,6 @@ import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 import axios from "@/api/axios";
 import ReviewGame from "./reviewGame";
-import ReturnGame from "./returnGame";
 import "./style.scss"
 
 const GAMES_LIBRARY = '/getownedgames';
@@ -143,19 +142,28 @@ export default function Library() {
   }
   const GamesOptions = ({type}) => {
     return(
-      <>
-        <h3>Opcje:</h3>
+      <div className="GameDetails">
         <img src={selectedDetails.mainPhoto} alt="" />
-        <div>
+        <div className="navBar">
           <button className="fav" onClick={addTofav}>{type === "normal" ? "Dodaj do ulubionych" : "Usuń z ulubionych"}</button>
         </div>
-        <div className="review">
-          <ReviewGame elemId={selectedRef.current} />
+        <div className="options">
+          <div className="review">
+            <ReviewGame elemId={selectedRef.current} />
+          </div>
         </div>
         <div className="return">
-          <ReturnGame elemId={selectedRef.current} />
-        </div>
-      </>
+            <a href="#">Nie podoba Ci się gra? Zwróć ją tutaj.</a>
+          </div>
+      </div>
+    );
+  }
+
+  const ShowNonePrompt = () => {
+    return(
+      <div className="nonePrompt">
+        Wybierz grę aby zobaczyć opcje
+      </div>
     );
   }
 
@@ -166,9 +174,7 @@ export default function Library() {
         <div className="gamesMenu">
           <GamesList games={games} favGames={favGames} />
           <div className="optionDiv">
-            <div className="gameOptions">
-              { type ? <GamesOptions gameId={selectedRef.current} type={type}/> : "Wybierz grę aby zobaczyć opcje"}
-            </div>
+            {type ? <GamesOptions gameId={selectedRef.current} type={type}/> : <ShowNonePrompt />}
           </div>
         </div>
       </main>

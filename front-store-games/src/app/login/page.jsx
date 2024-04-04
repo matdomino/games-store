@@ -20,7 +20,6 @@ export default function Login() {
     const walletBalance = cookie.get('walletBalance');
 
     if (userName && role && walletBalance) {
-      alert('pushuje na store')
       router.push('/store');
     }
   }, []);

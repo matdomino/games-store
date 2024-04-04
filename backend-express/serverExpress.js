@@ -52,7 +52,7 @@ const port = 3000;
 app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
-  origin: 'http://localhost:3001'
+  origin: 'http://localhost:8080'
 }));
 
 app.use(bodyParser.json());
