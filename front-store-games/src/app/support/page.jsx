@@ -68,37 +68,41 @@ export default function Support() {
         {user.username && <NavBar user={user} />}
       </div>
       <main>
-        <div className="menu">
-          <div className="pending">
-            <h2>Otwarte zapytania:</h2>
-            <ul>
-              {pending.map((elem, index) => (
-                <li key={index}>
-                  <h3>Temat: {elem.topic}</h3>
-                  <h4>ID: {elem._id}</h4>
-                  <div>Data: {new Date(elem.date).toLocaleString()}</div>
-                  <div>Wiadomosc: {elem.msg}</div>
-                </li>
-              ))}
-            </ul>
+        <div className="msgs">
+          <div className="menu">
+            <div className="pending">
+              <h2>Otwarte zapytania:</h2>
+              <ul>
+                {pending.map((elem, index) => (
+                  <li key={index}>
+                    <h3>Temat: {elem.topic}</h3>
+                    <h4>ID: {elem._id}</h4>
+                    <div>Data: {new Date(elem.date).toLocaleString()}</div>
+                    <div>Wiadomosc: {elem.msg}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="closed">
+            <h2>Zamknięte zapytania:</h2>
+              <ul>
+                {closed.map((elem, index) => (
+                  <li key={index}>
+                    <h3>Temat: {elem.topic}</h3>
+                    <h4>ID: {elem._id}</h4>
+                    <div>Data: {new Date(elem.date).toLocaleString()}</div>
+                    <div>Wiadomosc: {elem.msg}</div>
+                    <div>Odpowiedz: {elem.response}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="closed">
-          <h2>Zamknięte zapytania:</h2>
-            <ul>
-              {closed.map((elem, index) => (
-                <li key={index}>
-                  <h3>Temat: {elem.topic}</h3>
-                  <h4>ID: {elem._id}</h4>
-                  <div>Data: {new Date(elem.date).toLocaleString()}</div>
-                  <div>Wiadomosc: {elem.msg}</div>
-                  <div>Odpowiedz: {elem.response}</div>
-                </li>
-              ))}
-            </ul>
+          <div className="send">
+            <button onClick={sendMsg}>Wyślij zapytanie</button>
           </div>
         </div>
       </main>
-      <button onClick={sendMsg}>Wyślij zapytanie</button>
     </>
   );
 }

@@ -4,19 +4,26 @@
 @import '../_variables.scss';
 
 body {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  width: 100%;
-  height: 100vh;
-  padding-top: 5rem;
-  padding-bottom: 4rem;
-}
+  .form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .supportForm {
+    width: 40%;
+    min-width: 30rem;
+    max-width: 50rem;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+    border: 0.1rem solid;
+    border-radius: 0.25rem;
 
-.form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+    .backButton {
+      font-size: x-large;
+    }
+  }
 }
 

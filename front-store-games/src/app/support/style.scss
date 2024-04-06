@@ -8,7 +8,6 @@ body {
   flex-direction: column;
   margin: 0;
   width: 100%;
-  height: 100vh;
   padding-top: 5rem;
   padding-bottom: 4rem;
 
@@ -21,29 +20,39 @@ body {
     border-radius: 0.2rem;
   }
 
-  button {
-    padding: 0.5rem 1rem;
-    background-color: $vivid-violet500;
-    border: 0.1rem solid;
-    
+  main {
+    height: 100%;
   }
 
-  main {
+  .msgs {
     margin: 0;
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
+    flex-direction: column;
+
+    .send {
+      width: 80%;
+      min-width: 50rem;
+
+      button {
+        padding: 0.5rem 1rem;
+        background-color: $vivid-violet600;
+        border: 0.1rem solid;
+        border-radius: 0.25rem;
+        margin-top: 1rem;
+      }
+    }
 
     .menu {
       display: flex;
       flex-direction: row;
-      height: 50%;
+      height: 60%;
       min-width: 50rem;
       width: 80%;
 
-      .pending {
+      .pending, .closed {
         padding: 1rem;
         height: 100%;
         width: 50%;
@@ -53,6 +62,7 @@ body {
         box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
       
         h2 {
+          color: $vivid-violet300;
           font-size: large;
           font-weight: 700;
         }
@@ -72,39 +82,7 @@ body {
 
           li {
             margin-bottom: 2rem;
-          }
-        }
-      }
-      
-      .closed {
-        padding: 1rem;
-        height: 100%;
-        width: 50%;
-        border: 0.1rem solid;
-        margin-left: 0.5rem;
-        border-radius: 0.25rem;
-        box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
-      
-        h2 {
-          font-size: large;
-          font-weight: 700;
-        }
-      
-        ul {
-          overflow: auto; 
-          max-height: calc(100% - 3rem);
-
-          &::-webkit-scrollbar {
-            width: 0.4rem;
-          }
-        
-          &::-webkit-scrollbar-thumb {
-            background-color: $vivid-violet100;
-            border-radius: 0.2rem;
-          }
-
-          li {
-            margin-bottom: 2rem;
+            word-wrap: break-word;
           }
         }
       }

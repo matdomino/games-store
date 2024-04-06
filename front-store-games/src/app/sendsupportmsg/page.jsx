@@ -9,6 +9,7 @@ import NavBar from "../NavBar";
 import { setUserData } from "../setUserContext";
 import UserContext from "../context/UserContext";
 import cookie from 'js-cookie';
+import './style.scss';
 
 const SEND_URL = '/sendsupportmsg';
 
@@ -51,6 +52,7 @@ export default function SignIn ({ toggleForm }) {
       const sendMsg = await axios.post(SEND_URL, messageData, { withCredentials: true });
 
       if (sendMsg.status === 200) {
+        alert('Wysłano wiadomość.')
         router.push('/support');
       }
 
@@ -67,6 +69,10 @@ export default function SignIn ({ toggleForm }) {
     }
   };
 
+  const backButton = () => {
+    router.push('/support');
+  }
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -79,8 +85,9 @@ export default function SignIn ({ toggleForm }) {
     <>
       {user.username && <NavBar user={user} />}
       <div className="form-container">
-        <div className="border-1 border-vivid-violet-300 rounded-custom shadow-custom p-4" style={{ width: '25rem' }}>
+        <div className="supportForm">
           <form onSubmit={handleSubmit}>
+            <button className="backButton" onClick={backButton}>←</button>
             <h2 className="text-2xl font-bold pb-4">Wyślij wiadomość</h2>
             <div className="pb-2 flex flex-col">
               <label>
@@ -104,13 +111,11 @@ export default function SignIn ({ toggleForm }) {
                 name="msg"
                 value={values.msg}
                 onChange={handleChange}
+                rows={6}
               />
               <span className="text-xs text-vivid-violet-200">{errors.msg}</span>
             </div>
             <button type="submit" className="border-1 border-vivid-violet-900 p-2 rounded-custom text-vivid-violet-900 bg-vivid-violet-300 mt-2">Wyślij</button>
-            <div className="pb-2 pt-2">
-              <a href="#" onClick={toggleForm}>Nie masz konta? Kliknij tutaj.</a>
-            </div>
           </form>
         </div>
       </div>

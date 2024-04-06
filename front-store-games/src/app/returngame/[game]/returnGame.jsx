@@ -61,6 +61,7 @@ export default function ReturnGameModule ({ elemId, gameName }) {
     <form className="form" onSubmit={handleSubmit}>
       <div className="input">
         <h3>Zwróć grę:</h3>
+        <h4>{gameName}</h4>
         <label>
           Komentarz do zwrotu:
         </label>
