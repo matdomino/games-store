@@ -140,6 +140,11 @@ export default function Library() {
       }
     }
   }
+
+  const redirectToReturn = () => {
+    router.push(`/returngame/${selectedRef.current}`)
+  }
+
   const GamesOptions = ({type}) => {
     return(
       <div className="GameDetails">
@@ -152,8 +157,8 @@ export default function Library() {
             <ReviewGame elemId={selectedRef.current} />
           </div>
         </div>
-        <div className="return">
-            <a href="#">Nie podoba Ci się gra? Zwróć ją tutaj.</a>
+        <div className="returnUrl">
+            <a href="#" onClick={redirectToReturn}>Nie podoba Ci się gra? Zwróć ją tutaj.</a>
           </div>
       </div>
     );

@@ -3,11 +3,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from "@/api/axios";
 
-const REVIEW_URL = '/returngame';
+const RETURN_URL = '/returngame';
 
-const inputStyle = "bg-gun-powder-950 shadow-custom border-1 rounded-custom pl-2";
+const inputStyle = "bg-gun-powder-950 border-1 rounded-custom pl-2";
 
-export default function ReturnGame ({ elemId }) {
+export default function ReturnGameModule ({ elemId, gameName }) {
   const router = useRouter();
 
   const initialValues = {
@@ -26,10 +26,12 @@ export default function ReturnGame ({ elemId }) {
     };
 
     try {
-      const res = await axios.post(REVIEW_URL, data, { withCredentials: true });
+      const res = await axios.post(RETURN_URL, data, { withCredentials: true });
 
       if (res.data.status === "success") {
         alert("Wysłano żadanie zwrotu.");
+
+        router.push('/library');
       }
     } catch (err) {
       if (err.response && err.response.data.error) {
@@ -37,6 +39,8 @@ export default function ReturnGame ({ elemId }) {
           router.push('/');
         }
         alert(err.response.data.error);
+
+        router.push('/library');
       } else {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
@@ -58,13 +62,14 @@ export default function ReturnGame ({ elemId }) {
       <div className="input">
         <h3>Zwróć grę:</h3>
         <label>
-          Komentarz:
+          Komentarz do zwrotu:
         </label>
         <textarea
           className={inputStyle}
           name="comment"
           value={values.comment}
           onChange={handleChange}
+          rows={8}
         />
       </div>
       <button type="submit">Wyślij</button>

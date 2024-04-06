@@ -15,13 +15,19 @@ export default function Wallet() {
   const balance = user.walletBalance;
 
   useEffect(() => {
-    if (Object.keys(user).length === 0) {
-      const isLoggedIn = setUserData(setUser);
-      if (!isLoggedIn) {
+    const fetchData = async () => {
+      try {
+        if (Object.keys(user).length === 0) {
+          await setUserData(setUser);
+        }
+      } catch (error) {
+        console.error(error);
         router.push('/login');
       }
-    }
-  }, []);
+    };
+
+    fetchData();
+  });
 
   return (
     <div>
