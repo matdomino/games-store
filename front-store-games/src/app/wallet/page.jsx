@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
+import './style.scss';
 
 export default function Wallet() {
   const { user, setUser } = useContext(UserContext);
@@ -30,8 +31,23 @@ export default function Wallet() {
   });
 
   return (
-    <div>
+    <>
       {user.username && <NavBar user={user} />}
-    </div>
+      <main>
+        <div className="walletMenu">
+          <div className="info">
+            <div className="balance">
+              <h3>Stan kąta: </h3>
+              <h2>{balance} zł</h2>
+            </div>
+            <h3>Konto: {userName}</h3>
+          </div>
+          <div className="links">
+            <a href="/history" className="history">Historia transakcji</a>
+            <a href="/addbalance" className="addFunds">Dodaj środki na konto</a>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }

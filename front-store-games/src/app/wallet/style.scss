@@ -1,0 +1,57 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../_variables.scss';
+
+body {
+  main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .walletMenu {
+      width: 40%;
+      max-width: 30rem;
+      min-width: 20rem;
+      padding: 1rem;
+      border: 0.1rem solid;
+      border-radius: 0.2rem;
+      box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+
+      .info {
+        .balance {
+          margin-bottom: 1rem;
+
+          h3 {
+            color: $vivid-violet500;
+            font-size: x-large;
+          }
+
+          h2 {
+            color:  $vivid-violet400;
+            font-size: xxx-large;
+          }
+        }
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+
+        .history {
+          color: $vivid-violet300;
+          text-decoration: underline;
+        }
+
+        .addFunds {
+          margin-top: 2rem;
+          font-size: larger;
+          color: $vivid-violet500;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
