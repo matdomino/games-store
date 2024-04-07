@@ -15,15 +15,11 @@ const SEND_URL = '/sendsupportmsg';
 
 const inputStyle = "bg-gun-powder-950 shadow-custom border-1 rounded-custom pl-2";
 
-export default function SignIn ({ toggleForm }) {
+export default function SendSupportMsg () {
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {
-    const role = cookie.get('roleType');
-    if (role !== "employee") {
-      router.push('/store');
-    }
     if (Object.keys(user).length === 0) {
       const isLoggedIn = setUserData(setUser);
       if (!isLoggedIn) {

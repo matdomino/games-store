@@ -35,6 +35,10 @@ export default function SignIn ({ toggleForm }) {
       if (res.data.status === 'success') {
         const isLoggedIn = setUserData(setUser);
         if (isLoggedIn) {
+          const notifications = res.data.notifications.length;
+          if (notifications > 0) {
+            alert(`Masz ${notifications} nowych powiadomień.`);
+          }
           router.push('/store');
         } else {
           router.push("/");

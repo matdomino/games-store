@@ -69,7 +69,7 @@ body {
         
         ul {
           overflow: auto; 
-          max-height: calc(100% - 3rem); 
+          max-height: calc(100% - 5rem); 
 
           &::-webkit-scrollbar {
             width: 0.4rem;

@@ -18,7 +18,7 @@ const login = async (req, res, usersCollection, bcrypt, jwt, tokenKey) => {
       res.cookie('walletBalance', existingUser.walletBalance, {
         maxAge: 60 * 60 * 1000
       });
-      res.json({ status: 'success' });
+      res.json({ status: 'success', notifications: existingUser.notifications });
     } else {
       res.send({ status: 'failure' });
     }

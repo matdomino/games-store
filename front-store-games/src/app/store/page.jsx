@@ -29,7 +29,6 @@ export default function Store() {
     } catch (err) {
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
-          console.log(user);
           router.push('/');
         }
         alert(err.response.data.error);

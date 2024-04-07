@@ -7,7 +7,6 @@ const clearNotifications = async (req, res, usersCollection) => {
     if (isValidLogin === true) {
       const user = req.cookies.username;
       const updateNotifications = await usersCollection.updateOne({ "username": user }, { $set: { "notifications": [] } });
-      console.log(updateNotifications);
       if (updateNotifications.acknowledged === true && updateNotifications.matchedCount === 1 ) {
         res.json({ status: "success" });
       } else {
