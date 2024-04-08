@@ -31,7 +31,7 @@ const addBalance = async (req, res, usersCollection, transactionsCollection) => 
           }
 
           const userProfile = await usersCollection.findOne({ "username": username });
-          const newWalletBalance = userProfile.walletBalance + balanceOption;
+          const newWalletBalance = parseFloat((userProfile.walletBalance + balanceOption).toFixed(2));
 
           const transaction = {
             type: "Funds add to balance",

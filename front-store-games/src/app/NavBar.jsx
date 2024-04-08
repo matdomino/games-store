@@ -10,7 +10,7 @@ export default function NavBar(user) {
           <a href="/profile">{user.user.username.toUpperCase()}</a>
         </div>
         <div className="flex justify-between w-1/4" style={{ maxWidth: '18rem' }}>
-        <a className="walletBalance" href="wallet">Stan konta: {user.user.walletBalance}</a>
+        <a className="walletBalance" href="/wallet">Stan konta: {user.user.walletBalance}</a>
         <a href="/logout">Wyloguj się</a>
         </div>
       </div>
