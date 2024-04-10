@@ -3,45 +3,125 @@
 @import 'tailwindcss/utilities';
 @import '../_variables.scss';
 
+@mixin box-style {
+  padding: 1rem;
+  border: 0.1rem solid;
+  border-radius: 0.25rem;
+  box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+  margin: 1rem;
+}
+
 body {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  width: 100%;
-  height: 100vh;
 
   main {
-    padding-top: 5rem;
-    padding-bottom: 4rem;
-    margin: 0;
-    flex-grow: 1;
+    height: 100%;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
 
-    .cartMenu {
-      min-width: 20rem;
-      padding: 1rem;
-      border: 0.1rem solid;
-      border-radius: 0.25rem;
+    .cart-box {
+      width: 70%;
+      min-width: 50rem;
+      max-width: 65rem;
 
-      h3 {
-        font-size: x-large;
-        color: $vivid-violet500;
+      h1 {
+        margin-left: 1rem;
+        font-size: xx-large;
+        font-weight: 700;
+      }
+  
+      h2 {
+        font-size: larger;
+        color: $vivid-violet500;;
       }
 
-      li {
-        button {
-          margin-left: 2rem;
+      .cart{
+        display: flex;
+        flex-direction: row;
+        height: 25rem;
+  
+        .gameslist {
+          @include box-style;
+          width: 60%;
+
+          h2 {
+            margin-bottom: 1rem;
+          }
+          .prices {
+            height: calc(100% - 2rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            ul {
+              overflow: auto; 
+              &::-webkit-scrollbar {
+                width: 0.4rem;
+              }
+      
+              &::-webkit-scrollbar-thumb {
+                background-color: $vivid-violet100;
+                border-radius: 0.2rem;
+              }
+
+              li {
+                margin-right: 1rem;
+              }
+            }
+
+            h2 {
+              font-size: x-large;
+              color: $vivid-violet400;
+              margin-top: 0.5rem;
+            }
+
+            .game {
+              display: flex;
+              justify-content: space-between;
+
+              .options {
+                span {
+                  margin-right: 1rem;
+                }
+
+                button {
+                  color: $vivid-violet300
+                }
+              }
+            }
+          }
         }
-      }
 
-      button {
-        margin-top: 1rem;
-        padding: 0.2rem 0.5rem;
-        background-color: $vivid-violet500;
-        border: 0.1rem solid;
+        .address-and-button {
+          width: 40%;
+          height: 100%;
+
+          .address {
+            @include box-style;
+            margin-left: 0;
+
+            // 100% - wysokosc przycisku - padding i margin
+            height: calc(100% - 4rem - 3rem);
+          }
+
+          .button-box {
+            height: 4rem;
+            margin: 1rem;
+            margin-left: 0;
+            background-color: $vivid-violet700;
+            border: 0.1rem solid $vivid-violet700;
+            border-radius: 0.25rem;
+
+            button {
+              height: 100%;
+              width: 100%;
+              font-size: x-large;
+              color: #26252c;
+              font-weight: 600;
+            }
+          }
+        }
       }
     }
   }

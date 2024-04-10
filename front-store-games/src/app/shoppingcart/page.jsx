@@ -16,7 +16,6 @@ export default function ShoppingCart() {
   const [ reload, setReload ] = useState(false);
   const [ checkoutData, setCheckoutData ] = useState(null);
   const router = useRouter();
-  console.log(user);
 
   const getChekout = async () => {
     try {
@@ -46,7 +45,7 @@ export default function ShoppingCart() {
     }
 
     getChekout();
-  }, [reload]);
+  }, [user]);
 
   const finalizeOrder = async () => {
     try {
@@ -54,7 +53,7 @@ export default function ShoppingCart() {
 
       if (res.status === 200) {
         alert('Twoje zamówienie zostało zrealizowane!')
-        setReload(!reload);
+        await setUserData(setUser);
       }
     } catch (err) {
       if (err.response && err.response.data.error) {
@@ -90,44 +89,59 @@ export default function ShoppingCart() {
   };
 
   const Cart = ({checkoutData}) => {
-    console.log(checkoutData);
     return(
-      <div className="cart">
-          <h3>Koszyk:</h3>
-          <div className="address">
-            <h2>Adres:</h2>
-            <ul>
-              <li>Miasto: {checkoutData.address.city}</li>
-              <li>Ulica: {checkoutData.address.street}</li>
-              <li>Nr domu: {checkoutData.address.home}</li>
-              <li>Nr mieszkania: {checkoutData.address.flat}</li>
-              <li>Kod pocztowy: {checkoutData.address.postCode}</li>
-            </ul>
-          </div>
-          <div className="gameslist">
-            <h2>Gry:</h2>
-            <ul>
-              {checkoutData.shoppingCart.map((elem, index) => (
-                <li>
-                  {elem.name} {elem.price} zł <button onClick={() => deleteFromCart(elem._id)}>Usuń</button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button onClick={() => finalizeOrder()}>Kup gry</button>
+      <div className="cart-box">
+        <h1>Koszyk:</h1>
+        <div className="cart">
+            <div className="gameslist">
+              <h2>Gry:</h2>
+              <div className="prices">
+                <ul>
+                  {checkoutData.shoppingCart.map((elem, index) => (
+                    <li key={index}>
+                      <div className="game">
+                        <div className="name">
+                          <span>{elem.name}</span>
+                        </div>
+                        <div className="options">
+                          <span>{elem.price} zł</span>
+                          <button onClick={() => deleteFromCart(elem._id)}>Usuń</button>
+                        </div>
+                      </div> 
+                    </li>
+                  ))}
+                </ul>
+                <h2>Razem: {checkoutData.total} zł</h2>
+              </div>
+            </div>
+            <div className="address-and-button">
+              <div className="address">
+                <h2>Adres:</h2>
+                <ul>
+                  <li>{checkoutData.address.firstName} {checkoutData.address.lastName}</li>
+                  <li>Miasto: {checkoutData.address.city}</li>
+                  <li>Ulica: {checkoutData.address.street}</li>
+                  <li>Nr domu: {checkoutData.address.home}</li>
+                  <li>Nr mieszkania: {checkoutData.address.flat}</li>
+                  <li>Kod pocztowy: {checkoutData.address.postCode}</li>
+                </ul>
+              </div>
+              <div className="button-box">
+                <button onClick={() => finalizeOrder()}>Kup gry</button>
+              </div>
+            </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
+    <>
       {user.username && <NavBar user={user} />}
       <main>
-        <div className="cartMenu">
-          { checkoutData ? <Cart checkoutData={checkoutData} /> : null }
-        </div>
+        { checkoutData ? <Cart checkoutData={checkoutData} /> : null }
       </main>
-    </div>
+    </>
 
   );
 }
