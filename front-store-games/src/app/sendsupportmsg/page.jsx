@@ -8,7 +8,6 @@ import axios from '@/api/axios';
 import NavBar from "../NavBar";
 import { setUserData } from "../setUserContext";
 import UserContext from "../context/UserContext";
-import cookie from 'js-cookie';
 import './style.scss';
 
 const SEND_URL = '/sendsupportmsg';
@@ -20,12 +19,18 @@ export default function SendSupportMsg () {
   const router = useRouter();
 
   useEffect(() => {
-    if (Object.keys(user).length === 0) {
-      const isLoggedIn = setUserData(setUser);
-      if (!isLoggedIn) {
+    const fetchData = async () => {
+      try {
+        if (Object.keys(user).length === 0) {
+          await setUserData(setUser);
+        }
+      } catch (error) {
+        console.error(error);
         router.push('/login');
       }
-    }
+    };
+
+    fetchData();
   }, []);
 
   const initialValues = {
@@ -48,7 +53,7 @@ export default function SendSupportMsg () {
       const sendMsg = await axios.post(SEND_URL, messageData, { withCredentials: true });
 
       if (sendMsg.status === 200) {
-        alert('Wysłano wiadomość.')
+        alert('Wysłano wiadomość.');
         router.push('/support');
       }
 
@@ -67,7 +72,7 @@ export default function SendSupportMsg () {
 
   const backButton = () => {
     router.push('/support');
-  }
+  };
 
   const formik = useFormik({
     initialValues,

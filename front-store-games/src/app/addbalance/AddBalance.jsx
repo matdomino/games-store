@@ -44,12 +44,12 @@ export default function AddBalance () {
           router.push('/login');
         }
 
-        alert("Pomyślnie dodano środki na konto.")
+        alert("Pomyślnie dodano środki na konto.");
 
         router.push('/wallet');
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
           router.push('/');
@@ -72,7 +72,7 @@ export default function AddBalance () {
 
   const backButton = () => {
     router.push('/wallet');
-  }
+  };
 
   const { values, handleChange, handleSubmit, errors } = formik;
 

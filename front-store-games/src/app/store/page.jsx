@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ export default function Store() {
         setGames(res.data.games);
       } else {
         router.push('/');
-        alert('Wystąpił błąd podczas przetwarzania żądania.')
+        alert('Wystąpił błąd podczas przetwarzania żądania.');
       }
     } catch (err) {
       if (err.response && err.response.data.error) {
@@ -36,10 +36,7 @@ export default function Store() {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
-
-
-  console.log(games);
+  };
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {
@@ -58,7 +55,7 @@ export default function Store() {
 
   const redirectToGame = (gameId) => {
     router.push(`/game/${gameId}`);
-  }
+  };
 
   const GamesList = ({ games }) => {
     return(
@@ -80,7 +77,7 @@ export default function Store() {
         ))}
       </ul>
     );
-  }
+  };
 
   return (
     <div>

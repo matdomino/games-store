@@ -13,7 +13,7 @@ export default function PasswordChange ({ backFun }) {
   const initialValues = {
     newPassword: '',
     password: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     newPassword: Yup.string().min(5, 'Za krótkie hasło').max(30, "Za długie hasło").required('Hasło nie może być puste.'),

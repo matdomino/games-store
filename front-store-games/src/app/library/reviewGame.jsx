@@ -14,7 +14,7 @@ export default function ReviewGame ({ elemId }) {
     gameId: elemId,
     grade: '',
     comment: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     grade: Yup.string().required('Wybierz ocenę gry'),
@@ -54,7 +54,7 @@ export default function ReviewGame ({ elemId }) {
     onSubmit
   });
 
-  const { values, handleChange, handleSubmit, errors, setFieldValue } = formik;
+  const { values, handleChange, handleSubmit, errors } = formik;
 
   return(
     <form className="form" onSubmit={handleSubmit}>

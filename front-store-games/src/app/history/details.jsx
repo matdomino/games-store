@@ -11,7 +11,7 @@ function Address ({details}) {
           </ul>
     </div>
   );
-};
+}
 
 export function FundsAdd({ details }) {
   return(

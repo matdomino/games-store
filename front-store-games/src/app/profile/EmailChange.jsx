@@ -13,7 +13,7 @@ export default function EmailChange ({ backFun }) {
   const initialValues = {
     email: '',
     password: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Niepoprawny adres email').max(35, 'Za długi email').required('Email nie może być pusty'),

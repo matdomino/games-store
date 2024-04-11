@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -7,7 +7,7 @@ import UserContext from "../context/UserContext";
 import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 import './style.scss';
-import {FundsAdd, OrderFinalization, Return} from "./details"
+import {FundsAdd, OrderFinalization, Return} from "./details";
 
 const HISTORY_URL = '/gettransactionshistory';
 
@@ -40,7 +40,7 @@ export default function Notifications() {
         setHistory(res.data.transactions);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
           router.push('/');
@@ -62,10 +62,10 @@ export default function Notifications() {
       const res = await axios.get(TRANSACTION_DETAILS_URL, { withCredentials: true });
       if (res.status === 200) {
         setSelectedId(elem);
-        setSelectedDetails(res.data)
+        setSelectedDetails(res.data);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
           router.push('/');
@@ -109,7 +109,7 @@ export default function Notifications() {
         </ul>
       </div>
     );
-  }
+  };
 
   return (
     <>

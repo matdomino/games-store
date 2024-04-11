@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ export default function Support() {
           setClosed(msgs.data.closed);
           setPending(msgs.data.peding);
         } else {
-          alert('Wystąpił błąd podczas przetwarzania żądania.')
+          alert('Wystąpił błąd podczas przetwarzania żądania.');
         }
       } catch (err) {
         if (err.response && err.response.data.error) {
@@ -60,7 +60,7 @@ export default function Support() {
 
   const sendMsg = () => {
     router.push('/sendsupportmsg');
-  }
+  };
 
   return (
     <>

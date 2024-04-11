@@ -1,9 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import UserContext from "../context/UserContext";
-import { setUserData } from "../setUserContext";
 import cookie from 'js-cookie';
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -11,7 +9,6 @@ import './style.scss';
 
 export default function Login() {
   const [ form, setForm ] = useState(true);
-  const { user, setUser } = useContext(UserContext);
   const router = useRouter();
 
   useEffect(() => {
@@ -26,7 +23,7 @@ export default function Login() {
 
   const handleToggleForm = () => {
     setForm(!form);
-  }
+  };
 
   return (
     <>

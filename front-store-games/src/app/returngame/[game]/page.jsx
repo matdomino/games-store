@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,7 @@ import './style.scss';
 import axios from "@/api/axios";
 
 export default function ReturnGame({ params }) {
-  const GAME_URL = `/gamedetails/${params.game}`
+  const GAME_URL = `/gamedetails/${params.game}`;
 
   const { user, setUser } = useContext(UserContext);
   const [ game, setGame ] = useState(null);
@@ -40,18 +40,18 @@ export default function ReturnGame({ params }) {
           setGame(res.data.game);
         }
       } catch (err) {
-        console.log(err);
+        console.error(err);
         if (err.message.includes('Network Error')) {
           alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
-        } else if (err.response.status == 500) {
+        } else if (err.response.status === 500) {
           setGame("NotFound");
-        } else if (err.response.status == 404) {
+        } else if (err.response.status === 404) {
           setGame("NotFound");
         } else {
           router.push('/');
-        } 
+        }
       }
-    }
+    };
     dataFetch();
   }, []);
 
@@ -61,11 +61,11 @@ export default function ReturnGame({ params }) {
         404: Nie znaleziono podanej gry
       </div>
     );
-  }
+  };
 
   const goBack = () => {
     router.push('/library');
-  }
+  };
 
   return (
     <main>

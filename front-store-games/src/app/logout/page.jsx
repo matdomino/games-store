@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -19,10 +19,10 @@ export default function Logout() {
         setUser({});
         router.push('/');
       } else {
-        alert('Wystąpił błąd podczas przetwarzania żądania.')
+        alert('Wystąpił błąd podczas przetwarzania żądania.');
       }
     } catch {
-      alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.')
+      alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
     }
   };
 

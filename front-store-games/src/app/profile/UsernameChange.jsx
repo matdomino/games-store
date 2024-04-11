@@ -13,7 +13,7 @@ export default function EmailChange ({ backFun }) {
   const initialValues = {
     username: '',
     password: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     username: Yup.string().min(4, "Za krótka nazwa użytkownika").max(20, "Za długa nazwa użytkownika").required('Nazwa użytkownika nie może być pusta.'),

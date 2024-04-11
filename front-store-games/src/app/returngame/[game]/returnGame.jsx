@@ -13,7 +13,7 @@ export default function ReturnGameModule ({ elemId, gameName }) {
   const initialValues = {
     gameId: elemId,
     comment: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     comment: Yup.string().min(5, "Za krótki komentarz").max(200, "Za długi komentarz").required('Komentarz nie może być pusty')

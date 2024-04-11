@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -52,7 +52,7 @@ export default function ShoppingCart() {
       const res = await axios.post(FINALIZE_URL, { withCredentials: true });
 
       if (res.status === 200) {
-        alert('Twoje zamówienie zostało zrealizowane!')
+        alert('Twoje zamówienie zostało zrealizowane!');
         await setUserData(setUser);
       }
     } catch (err) {
@@ -65,7 +65,7 @@ export default function ShoppingCart() {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
+  };
 
   const deleteFromCart = async (gameId) => {
     try {
@@ -107,7 +107,7 @@ export default function ShoppingCart() {
                           <span>{elem.price} zł</span>
                           <button onClick={() => deleteFromCart(elem._id)}>Usuń</button>
                         </div>
-                      </div> 
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -133,7 +133,7 @@ export default function ShoppingCart() {
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <>

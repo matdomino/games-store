@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -7,7 +7,7 @@ import { setUserData } from "../setUserContext";
 import NavBar from "../NavBar";
 import axios from "@/api/axios";
 import ReviewGame from "./reviewGame";
-import "./style.scss"
+import "./style.scss";
 
 const GAMES_LIBRARY = '/getownedgames';
 const ADD_FAV = '/addtofavourites';
@@ -22,16 +22,6 @@ export default function Library() {
   const [ type, setType ] = useState(null);
   const selectedRef = useRef(null);
 
-  useEffect(() => {
-    if (Object.keys(user).length === 0) {
-      const isLoggedIn = setUserData(setUser);
-      if (!isLoggedIn) {
-        router.push('/login');
-      }
-    }
-    getLibrary();
-  }, [refresh]);
-
   const getLibrary = async () => {
     try {
       const res = await axios.get(GAMES_LIBRARY, { withCredentials: true });
@@ -43,7 +33,7 @@ export default function Library() {
     } catch (err) {
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
-          console.log(user);
+          console.error(user);
           router.push('/');
         }
         alert(err.response.data.error);
@@ -53,8 +43,18 @@ export default function Library() {
     }
   };
 
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      const isLoggedIn = setUserData(setUser);
+      if (!isLoggedIn) {
+        router.push('/login');
+      }
+    }
+    getLibrary();
+  }, [refresh]);
+
   const getGamesDetails = async (elemId) => {
-    const GAME_URL = `/gamedetails/${elemId}`
+    const GAME_URL = `/gamedetails/${elemId}`;
 
     try {
       const res = await axios.get(GAME_URL, { withCredentials: true });
@@ -62,16 +62,16 @@ export default function Library() {
         setSelectedDetails(res.data.game);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.message.includes('Network Error')) {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
-      } else if (err.response.status == 500) {
+      } else if (err.response.status === 500) {
         setType(null);
-      } else if (err.response.status == 404) {
+      } else if (err.response.status === 404) {
         setType(null);
       } else {
         router.push('/');
-      } 
+      }
     }
   };
 
@@ -131,7 +131,7 @@ export default function Library() {
     } catch (err) {
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
-          console.log(user);
+          console.error(user);
           router.push('/');
         }
         alert(err.response.data.error);
@@ -139,11 +139,11 @@ export default function Library() {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
+  };
 
   const redirectToReturn = () => {
-    router.push(`/returngame/${selectedRef.current}`)
-  }
+    router.push(`/returngame/${selectedRef.current}`);
+  };
 
   const GamesOptions = ({type}) => {
     return(
@@ -162,7 +162,7 @@ export default function Library() {
           </div>
       </div>
     );
-  }
+  };
 
   const ShowNonePrompt = () => {
     return(
@@ -170,7 +170,7 @@ export default function Library() {
         Wybierz grę aby zobaczyć opcje
       </div>
     );
-  }
+  };
 
   return (
     <div>

@@ -33,7 +33,7 @@ module.exports = {
           '800': '#41404c',
           '900': '#3a3842',
           '950': '#26252c',
-        },      
+        },
       },
       boxShadow: {
         custom: '0rem 0rem 0.5rem theme("colors.vivid-violet.500")'

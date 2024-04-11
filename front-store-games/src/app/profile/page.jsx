@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -24,19 +24,19 @@ export default function Profile() {
     const dataFetch = async () => {
       try {
         const res = await axios.get(USER_DATA_URL, { withCredentials: true });
-  
+
         if (res.data.status === "success") {
           setUserInfo(res.data.data);
         }
       } catch (err) {
-        console.log(err);
+        console.error(err);
         if (err.message.includes('Network Error')) {
           alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
         } else {
           router.push('/');
-        } 
+        }
       }
-    }
+    };
     dataFetch();
   }, []);
 
@@ -106,7 +106,7 @@ export default function Profile() {
         </div>
       </div>
     );
-  }
+  };
 
   const renderComponent = () => {
     switch (component) {

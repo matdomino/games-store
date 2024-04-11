@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -10,8 +10,8 @@ import './style.scss';
 import axios from "@/api/axios";
 
 export default function Game({ params }) {
-  const GAME_URL = `/gamedetails/${params.gameid}`
-  const ADD_TO_CART_URL = `/addgametocart/${params.gameid}`
+  const GAME_URL = `/gamedetails/${params.gameid}`;
+  const ADD_TO_CART_URL = `/addgametocart/${params.gameid}`;
 
   const { user, setUser } = useContext(UserContext);
   const router = useRouter();
@@ -21,9 +21,8 @@ export default function Game({ params }) {
     try {
       const res = await axios.put(ADD_TO_CART_URL, { withCredentials: true });
 
-      console.log(res);
       if (res.status === 200) {
-        alert(res.data.status)
+        alert(res.data.status);
       }
     } catch (err) {
       if (err.response && err.response.data.error) {
@@ -35,7 +34,7 @@ export default function Game({ params }) {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
+  };
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {
@@ -56,18 +55,18 @@ export default function Game({ params }) {
           setGame(res.data.game);
         }
       } catch (err) {
-        console.log(err);
+        console.error(err);
         if (err.message.includes('Network Error')) {
           alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
-        } else if (err.response.status == 500) {
+        } else if (err.response.status === 500) {
           setGame("NotFound");
-        } else if (err.response.status == 404) {
+        } else if (err.response.status === 404) {
           setGame("NotFound");
         } else {
           router.push('/');
-        } 
+        }
       }
-    }
+    };
     dataFetch();
   }, []);
 
@@ -77,7 +76,7 @@ export default function Game({ params }) {
         404: Nie znaleziono podanej gry
       </div>
     );
-  }
+  };
 
   return (
     <>

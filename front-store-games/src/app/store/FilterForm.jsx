@@ -19,7 +19,7 @@ export default function FilterForm ({ setGames }) {
     filterBy: '',
     minPrice: '',
     maxPrice: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     searchPhrase: Yup.string().min(1, "Za krótka fraza").max(20, "Za długa fraza"),
@@ -48,8 +48,7 @@ export default function FilterForm ({ setGames }) {
     };
 
     try {
-
-      let res
+      let res;
 
       if (values.searchPhrase) {
         res = await axios.post(SEARCH_GAMES, searchData, { withCredentials: true });
@@ -60,7 +59,7 @@ export default function FilterForm ({ setGames }) {
       if (res.data.status === "success") {
         setGames(res.data.games);
       } else {
-        alert('Wystąpił błąd podczas przetwarzania żądania.')
+        alert('Wystąpił błąd podczas przetwarzania żądania.');
       }
     } catch (err) {
       if (err.response && err.response.data.error) {

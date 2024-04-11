@@ -18,7 +18,7 @@ export default function PasswordChange ({ backFun }) {
     home: '',
     flat: '',
     postCode: ''
-  }
+  };
 
   const validationSchema = Yup.object({
     firstName: Yup.string().min(2, "Za krótkie imie").max(20, "Za długie imie").required('Imię nie może być puste'),
@@ -46,7 +46,6 @@ export default function PasswordChange ({ backFun }) {
     try {
       const res = await axios.put(ADDRESS_CHANGE, userData, { withCredentials: true });
 
-      console.log(res.data);
       if (res.data.status === "success") {
         router.push('/store');
       }

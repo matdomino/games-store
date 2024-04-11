@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -52,7 +52,7 @@ export default function AdminPanel() {
           }
         });
         if (res.status === 200) {
-          alert("Dodano grę do bazy!")
+          alert("Dodano grę do bazy!");
         }
       } catch (err) {
         if (err.response && err.response.data.error) {

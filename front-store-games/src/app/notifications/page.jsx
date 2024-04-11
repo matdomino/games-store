@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -38,7 +38,7 @@ export default function Notifications() {
         setNotif(res.data.notifications);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
           router.push('/');
@@ -48,7 +48,7 @@ export default function Notifications() {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
+  };
 
   const clearNotifications = async () => {
     try {
@@ -57,7 +57,7 @@ export default function Notifications() {
         setNotif([]);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       if (err.response && err.response.data.error) {
         if (err.response.status === 401) {
           router.push('/');
@@ -67,10 +67,9 @@ export default function Notifications() {
         alert('Brak odpowiedzi serwera. Skontaktuj się z administratorem.');
       }
     }
-  }
+  };
 
-  useEffect(() => { 
-  }, [notif]);
+  useEffect(() => {}, [notif]);
 
   useEffect(() => {
 
@@ -93,7 +92,7 @@ export default function Notifications() {
         </div>
       </div>
     );
-  }
+  };
 
   const NotificationsEmpty = () => {
     return(
@@ -101,7 +100,7 @@ export default function Notifications() {
         Nie masz obecnie żadnych powiadomień
       </div>
     );
-  }
+  };
 
   return (
     <>
