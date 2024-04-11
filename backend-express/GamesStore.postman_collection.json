@@ -1,0 +1,973 @@
+{
+	"info": {
+		"_postman_id": "8e08e08a-941f-46fa-8231-58e092edd831",
+		"name": "GamesStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32528267"
+	},
+	"item": [
+		{
+			"name": "Employee operations",
+			"item": [
+				{
+					"name": "getFullTransactionHistory (employee)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/transactionhistory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transactionhistory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "respondToRefund (employee)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pendingId\": \"65b72269d430a2dc42471321\",\r\n    \"response\": \"odpowiedz\",\r\n    \"accepted\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/respondtorefund",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"respondtorefund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGame (employee)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/mdomi/Desktop/games/terraria.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/addgame",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addgame"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "banUser (employee)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/banuser/65aad3ede80bd1c9c6b0541b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"banuser",
+								"65aad3ede80bd1c9c6b0541b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers (employee)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SIGNIN (employee)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"admin\",\r\n  \"pass\": \"haslo123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser (employee)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/65aad3ede80bd1c9c6b0541b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"65aad3ede80bd1c9c6b0541b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "respondToSupport (employee)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pendingId\": \"66128b97020c84f83c87a851\",\r\n    \"response\": \"Odpowiedz na wiadomosc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/respondtosupportmsg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"respondtosupportmsg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRefundsList (employee)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/getrefundslist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getrefundslist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSupportList (employee)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/getsupportlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getsupportlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"przyklad@wp.pl\",\r\n  \"user\": \"uzytkownik\",\r\n  \"pass\": \"haslo123\",\r\n  \"address\": {\r\n    \"firstName\": \"Jan\",\r\n    \"lastName\": \"Kowalski\",\r\n    \"city\": \"Gdańsk\",\r\n    \"street\": \"Grunwaldzka\",\r\n    \"home\": \"10A\",\r\n    \"flat\": \"\",\r\n    \"postCode\": \"80-000\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"uzytkownik\",\r\n  \"pass\": \"haslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGames",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sortBy\": \"name\",\r\n    \"sortOrder\": \"asc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/storegames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"storegames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGames z filtrem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sortBy\": \"name\",\r\n    \"sortOrder\": \"asc\",\r\n    \"filterBy\": \"FPS\",\r\n    \"minPrice\": 10,\r\n    \"maxPrice\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/storegames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"storegames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchGames",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchPhrase\": \"2019\",\r\n    \"sortBy\": \"name\",\r\n    \"sortOrder\": \"asc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/searchgames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"searchgames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchGames z filtrem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchPhrase\": \"2019\",\r\n    \"sortBy\": \"name\",\r\n    \"sortOrder\": \"asc\",\r\n    \"minPrice\": 50,\r\n    \"filterBy\": \"Przygodowe\",\r\n    \"maxPrice\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/searchgames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"searchgames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getGameDetails.js",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gamedetails/6604614b582ecb211ab3cb79",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gamedetails",
+						"6604614b582ecb211ab3cb79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addToCart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/addgametocart/65babb441a39fcf39788e53a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addgametocart",
+						"65babb441a39fcf39788e53a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteFromCart.js",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/deletefromcart/65babb441a39fcf39788e53a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deletefromcart",
+						"65babb441a39fcf39788e53a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkOut",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/checkout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clearNotifications",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/clearnotifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clearnotifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNotifications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserData",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getuserdata",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getuserdata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getWalletBalance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/walletbalance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"walletbalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeUsername",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"nowanazwa\",\r\n    \"pass\": \"haslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/changeusername",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"changeusername"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changePassword",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"newPass\": \"haslo321\",\r\n    \"oldPass\": \"haslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/changepassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"changepassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeAdress",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Andrzej\",\r\n    \"lastName\": \"Kowalski\",\r\n    \"city\": \"Gdańsk\",\r\n    \"street\": \"Grunwaldzka\",\r\n    \"home\": \"10A\",\r\n    \"flat\": \"\",\r\n    \"postCode\": \"80-000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/changeaddress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"changeaddress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeEmail",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"nowy@wp.pl\",\r\n    \"pass\": \"haslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/changeemail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"changeemail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAccount",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"uzytkownik\",\r\n    \"pass\": \"haslo123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/deleteaccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteaccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addBalance",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentOption\": \"Blik\",\r\n    \"balanceOption\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/addbalance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addbalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "finalizeOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/finalizeorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"finalizeorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOwnedGames",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getownedgames",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getownedgames"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addToFavourites",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/addtofavourites/65ba9d0c3c1906536f9a167b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addtofavourites",
+						"65ba9d0c3c1906536f9a167b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reviewGame",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"gameId\": \"65babb441a39fcf39788e53a\",\r\n    \"grade\": 5,\r\n    \"comment\": \"Tekst komentarza\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/reviewgame",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reviewgame"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "returnGame",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"gameId\": \"65b194a0acebf109e86a5f86\",\r\n    \"comment\": \"Tekst zwrotu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/returngame",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"returngame"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendSupportMsg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"topic\": \"Temat wiadomosci\",\r\n    \"msg\": \"Komentarz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sendsupportmsg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sendsupportmsg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gettransactionshistory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gettransactionshistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistoryDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gettransactiondetails/65b5c8e749c11925cb1f0d4d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gettransactiondetails",
+						"65b5c8e749c11925cb1f0d4d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSupportMsgs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getsupportmsgs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getsupportmsgs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRefunds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getrefunds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getrefunds"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
