@@ -1,0 +1,85 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../_variables.scss';
+
+body {
+  main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .historyList {
+      height: 40rem;
+      width: 60%;
+      min-width: 30rem;
+      max-width: 50rem;
+      padding: 1rem;
+      border: 0.1rem solid;
+      border-radius: 0.25rem;
+      box-shadow: 0rem 0rem 0.5rem $vivid-violet500;
+
+      h1 {
+        height: 10%;
+        font-size: xx-large;
+        font-weight: 600;
+        color: $vivid-violet600;
+      }
+      
+      ul {
+        overflow: auto;
+        max-height: 90%;
+
+        &::-webkit-scrollbar {
+          width: 0.4rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $vivid-violet100;
+          border-radius: 0.2rem;
+        }
+
+        li {
+          margin-bottom: 1rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          .details {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+
+            li {
+              margin-bottom: auto;
+            }
+
+            h2 {
+              color: $vivid-violet400;
+              margin-bottom: 0.5rem;
+            }
+
+            h3 {
+              color: $vivid-violet300;
+            }
+
+            .info {
+              width: 60%;
+
+              li {
+                margin-left: 1rem;
+              }
+            }
+
+            .address {
+              width: 40%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

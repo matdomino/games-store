@@ -72,7 +72,7 @@ export default function GameDetails ({ game, addToShoppingCart }) {
         <h3>Oceny:</h3>
         <ul>
           {game.reviews.map((elem, index) => (
-            <li>
+            <li key={index}>
               <h4>Ocena: {elem.grade}</h4>
               <span>{elem.comment}</span>
             </li>
