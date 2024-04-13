@@ -58,7 +58,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const dbUrl = 'mongodb://localhost:27017/';
+const dbUrl = 'mongodb://mongo-db:27017/';
 const dbName = 'games-store-db';
 
 async function connect() {
