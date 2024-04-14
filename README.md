@@ -1,25 +1,75 @@
-# Games Store web aplication 
+# Games Store web aplication
 ## Contents
 1. [Introduction](#introduction)
-2. [Endpoints Description](#endpoints-description)
-3. [Installation](#installation)
+2. [Installation](#installation)
+3. [Endpoints Description](#endpoints-description)
 4. [Author](#author)
 
 ## Introduction
-tekst
+A web application of a digital games store.
 
-## Endpoints Description
+### Used technology:
+- JavaScript - react,
+- Node.js - express,
+- Jsonwebtoken,
+- MognoDB,
+
+
+## Installation
+Run using Docker with commands below:
+
+### Step 0 (optional)
+Uncomment this line in `docker-compose.yml` if you want to access database outside Docker.
+```
+ports:
+  - "27017:27017"
+```
+
+### Step 1
+Set up containers with db, back-end, front-end:
+#### `docker-compose up -d` 
+
+### Step 2
+Set up database collections and example employee user:
+#### `docker exec -it games-store-db mongosh games-store-db ./setup/dbInit.mongodb.js`
+
+### Step 3
+Access the app at link below:
+#### [http://localhost:8080/](http://localhost:8080/)
+
+## Endpoints description
 ### Database queries examples in Postman:
 `/backend-express/GamesStore.postman_collection.json`
 
 ### Pages
 
-`/login` - tekst
+`/addbalance` - Add balance to wallet.
 
-## Installation
-### Backend
+`/adminpanel` - Panel for employee users to add games to database.
 
-### Frontend
+`/game/[gameId]` - Selected game details.
+
+`/history` - User's transaction history.
+
+`/library` - Library with games owned by user.
+
+`/login` - Login/register page.
+
+`/notifications` - User's notifications list.
+
+`/profile` - Panel to change username, password, email, billingInfo.
+
+`/returngame/[gameId]` - Form to return selected game.
+
+`/sendsupportmsg` - Form to send support messages.
+
+`/shoppingcart` - Page with current user's shopping cart.
+
+`/store` - Main store page to browse games. 
+
+`/support` - Page with pending/closed support messages
+
+`/wallet` - Wallet info and options.
 
 ## Author
 * ### Mateusz Domino: [LinkedIn](https://www.linkedin.com/in/mateusz-domino-214927270/)
