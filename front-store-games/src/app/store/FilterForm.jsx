@@ -48,7 +48,7 @@ export default function FilterForm ({ setGames }) {
     };
 
     try {
-      let res;
+      let res = null;
 
       if (values.searchPhrase) {
         res = await axios.post(SEARCH_GAMES, searchData, { withCredentials: true });

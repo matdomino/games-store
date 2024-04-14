@@ -9,14 +9,14 @@
 A web application of a digital games store.
 
 ### Used technology:
-- JavaScript - react,
-- Node.js - express,
+- Next.js, React,
+- Node.js, express,
 - Jsonwebtoken,
 - MognoDB,
 
 
 ## Installation
-Run using Docker with commands below:
+Run using Docker with commands below `(run commands in /games-store/ directory)`:
 
 ### Step 0 (optional)
 Uncomment this line in `docker-compose.yml` if you want to access database outside Docker.
@@ -27,11 +27,15 @@ ports:
 
 ### Step 1
 Set up containers with db, back-end, front-end:
-#### `docker-compose up -d` 
+```
+docker-compose up -d
+```
 
 ### Step 2
 Set up database collections and example employee user:
-#### `docker exec -it games-store-db mongosh games-store-db ./setup/dbInit.mongodb.js`
+```
+docker exec -it games-store-db mongosh games-store-db ./setup/dbInit.mongodb.js
+```
 
 ### Step 3
 Access the app at link below:
