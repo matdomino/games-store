@@ -8,6 +8,8 @@
 ## Introduction
 A web application of a digital games store.
 
+![Main page](https://i.imgur.com/ESQwS5A.png)
+
 ### Used technology:
 - Next.js, React,
 - Node.js, express,
