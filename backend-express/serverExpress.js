@@ -6,7 +6,6 @@ const cors = require('cors');
 const { MongoClient, ObjectId } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
-const tokenKey = require('./tokenKey');
 const { login } = require('./rest-api/login');
 const { register } = require('./rest-api/register');
 const { logout } = require('./rest-api/logout');
@@ -45,7 +44,13 @@ const { getHistory } = require('./rest-api/getHistory');
 const { getHistoryDetails } = require('./rest-api/getHistoryDetails');
 const { getSupportMsgs } = require('./rest-api/getSupportMsgs');
 const { getRefunds } = require('./rest-api/getRefunds');
+require('dotenv').config();
 
+const tokenKey = process.env.TOKEN_KEY;
+
+if (!tokenKey) {
+  throw new Error("TOKEN_KEY is not set in the environment variables");
+}
 
 const app = express();
 const port = 3000;

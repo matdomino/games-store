@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const tokenKey = require('../tokenKey');
+const tokenKey = process.env.TOKEN_KEY;
 
 const clearAllCookies = (res) => {
   res.clearCookie('accessToken');

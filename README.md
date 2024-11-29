@@ -28,18 +28,25 @@ ports:
 ```
 
 ### Step 1
+Set up the `.env` file with `API tokenKey` in `games-store` directory.
+You can refer to the `.env_sample` file for an example:
+```
+TOKEN_KEY=YOUR_TOKEN_KEY
+```
+
+### Step 2
 Set up containers with db, back-end, front-end:
 ```
 docker-compose up -d
 ```
 
-### Step 2
+### Step 3
 Set up database collections and example employee user:
 ```
 docker exec -it games-store-db mongosh games-store-db ./setup/dbInit.mongodb.js
 ```
 
-### Step 3
+### Step 4
 Access the app at link below:
 #### [http://localhost:8080/](http://localhost:8080/)
 
